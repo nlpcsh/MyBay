@@ -17,10 +17,13 @@ $(document).ready(function() {
 
     productsContainer.on('click', 'div', function(event) {
         let curentId = event.currentTarget.id;
+
         if (event.target.innerHTML == "Add to Basket") {
             console.log(event.currentTarget.id);
+            currentUser.addToBasket(curentId);
         }
     });
+
     /* DEBUG 
     console.log("List ID: " + products.id);
     products.productsList.forEach(p => {

@@ -4,11 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/mybay.css">
+    <!-- CDN lib calls -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script> -->
+    <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script> -->
+    <!-- <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"> -->
+    <link rel="stylesheet" href="libs/toastr/toastr.min.css">
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+
+    <script src="libs/jQuery/jquery-3.3.1.min.js"></script>
+    <script src="libs/toastr/toastr.min.js"></script>
+    <script src="libs/handlebars/handlebars.min.js"></script>
 
     <title>MyBay</title>
 
@@ -64,17 +71,17 @@
                 <div class="jumbotron">
                     Basket Info:
                     <table class="table" id="added-products">
-                        <tr>
+                        <tr id="added-products-table-header">
                             <th>Product</th>
                             <th>Qantity</th>
                         </tr>
-                        <tr>
+                        <tr id="currently-aded-product">
                             <td>None</td>
-                            <td>0</td>
+                            <td class="prise">0</td>
                         </tr>
                         <tr>
                             <td>Total Value</td>
-                            <td>0</td>
+                            <td class="prise">0</td>
                         </tr>
                     </table>
                 </div>
@@ -101,13 +108,14 @@
                 {{description}}
             </p>
             <p>
-                Products prise: $ {{singleUnitPrise}}
+                Cost: $ {{singleUnitPrise}}
             </p>
             <button>Add to Basket</button>
             <button class='hidden'>Remove from Basket</buton>
         </div>
         {{/productsList}}
     </script>
+
     <script src="libs/bootstrap/js/bootstrap.min.js"></script>
     <script src="js/objects.js"></script>
     <script src="js/main.js"></script>

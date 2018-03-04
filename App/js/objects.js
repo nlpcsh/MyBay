@@ -33,23 +33,77 @@ class Product {
 class User {
     constructor(uName) {
         this._uName = uName;
-        this._shoppingCart = [];
+        this._shoppingBasket = [];
     }
 
     get uName() {
         return this._uName;
     }
 
-    get shoppingCart() {
-        return this._shoppingCart;
+    get shoppingBasket() {
+        return this._shoppingBasket;
     }
 
-    addToCart(product) {
-        shoppingCart.push(product);
-    }
+    addToBasket(productIdtoAdd) {
+        function addNewProductToTable(shoppingBasket) {
+            shoppingBasket.push({
+                productId: productIdtoAdd,
+                qantity: 1
+            });
+            $("#added-products-table-header").after('<tr id=' + productIdtoAdd + ' > <td>' + productIdtoAdd + '</td><td>' + 1 + ' </td></tr>');
+        }
 
-    removeFromCart(product) {
-        shoppingCart.remove(product);
+        // add quantoty if the product exists
+        if (this._shoppingBasket[0] == undefined) {
+            addNewProductToTable(this._shoppingBasket);
+        } else {
+            let counter = 0;
+            for (let i = 0; i < this._shoppingBasket.length; i += 1) {
+                if (this._shoppingBasket[i].productId === productIdtoAdd) {
+                    counter += 1;
+                    this._shoppingBasket[i].qantity += 1;
+                    if (this._shoppingBasket[i].qantity > 5) {
+                        toastr["warning"]("Тhe selected quantity for product " + this._shoppingBasket[i].productId + " is out of stock");
+                        return;
+                    }
+                    console.log($("tr#" + productIdtoAdd + " td + td").html());
+                    $("tr#" + productIdtoAdd + " td + td").html(this._shoppingBasket[i].qantity);
+                }
+                // last loop - if product not present  - add to the list
+                if ((counter == 0) && (i == this._shoppingBasket.length - 1)) {
+                    addNewProductToTable(this._shoppingBasket);
+                }
+            }
+
+            toastr["info"]("Product added: " + productIdtoAdd);
+            // this._shoppingBasket.forEach(function(p) {
+            //     if (p.productId === productIdtoAdd) {
+            //         p.qantity += 1;
+            //         if (p.qantity > 5) {
+            //             toastr["warning"]("Тhe selected quantity for product " + p.productId + " is out of stock");
+            //             return;
+            //         }
+            //         console.log($("tr#" + productIdtoAdd + " td + td").html());
+            //         $("tr#" + productIdtoAdd + " td + td").html(p.qantity);
+            //     }
+
+            // });
+        }
+        // for (let product in this._shoppingBasket) {
+        //     if (productIdtoAdd === product.key) {
+        //         if (product.value < 5) {
+        //             product.value += 1;
+        //             $("tr#" + product.key + " td:2").html(product.value);
+        //         } else {
+        //             toastr["warning"]("Тhe selected quantity for product " + product.key + " is out of stock");
+        //             return;
+        //         }
+        //     }
+        // }
+        // add new product if no such product exists
+    }
+    removeFromBasket(product) {
+        shoppingBasket.remove(product);
     }
 }
 
@@ -62,7 +116,7 @@ class MyBayManger {
             productsList: []
         };
 
-        for (let i = 0; i < 6; i += 1) {
+        for (let i = 0; i < 5; i += 1) {
             products.productsList.push(new Product("Name " + i, 1000 + i, "Description " + i, i + 10.99, "Image " + i));
         }
 
