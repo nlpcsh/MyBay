@@ -1,7 +1,8 @@
 'use strict';
 
 class Product {
-    constructor(name, description, singleUnitPrise, image) {
+    constructor(name, productId, description, singleUnitPrise, image) {
+        this._id = productId;
         this._name = name;
         this._description = description;
         this._image = image;
@@ -10,6 +11,10 @@ class Product {
 
     get name() {
         return this._name;
+    }
+
+    get id() {
+        return this._id;
     }
 
     get description() {
@@ -49,16 +54,16 @@ class User {
 }
 
 class MyBayManger {
-    static getListOfProducts(productId) {
-        productId = productId || 0;
+    static getListOfProducts(productListId) {
+        productListId = productListId || 0;
         // real functionality should be to get the available products from the app server
         let products = {
-            id: productId,
+            listId: productListId,
             productsList: []
         };
 
         for (let i = 0; i < 6; i += 1) {
-            products.productsList.push(new Product("Name " + i, "Description " + i, i + 10.99, "Image " + i));
+            products.productsList.push(new Product("Name " + i, 1000 + i, "Description " + i, i + 10.99, "Image " + i));
         }
 
         return products;

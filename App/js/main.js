@@ -2,13 +2,25 @@
 
 $(document).ready(function() {
 
-    let produtsId = 1;
-    let products = MyBayManger.getListOfProducts(produtsId);
-    let currentUser = new User("Pesho");
+    let produtsListId = 1;
+    let products = MyBayManger.getListOfProducts(produtsListId);
+    let currentUser = new User("Unufri");
+
+    $("#welcome").html('Welcome to MyBay, dear ' + currentUser.uName + '!');
     //getTemplateAjax("templates/product.handlebars");
 
-    var template = Handlebars.compile(document.getElementById('products-template').innerHTML);
-    document.getElementById('container').innerHTML = template(products);
+    // add products using a template
+    let template = Handlebars.compile(document.getElementById('products-template').innerHTML);
+    document.getElementById('product-container').innerHTML = template(products);
+
+    let productsContainer = $('#product-container');
+
+    productsContainer.on('click', 'div', function(event) {
+        let curentId = event.currentTarget.id;
+        if (event.target.innerHTML == "Add to Basket") {
+            console.log(event.currentTarget.id);
+        }
+    });
     /* DEBUG 
     console.log("List ID: " + products.id);
     products.productsList.forEach(p => {
@@ -18,6 +30,7 @@ $(document).ready(function() {
     });
     console.log("Current user name: " + currentUser.uName);
     */
+
 
 });
 /*
