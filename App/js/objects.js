@@ -108,7 +108,7 @@ class MyBayManger {
         };
 
         for (let i = 0; i < 5; i += 1) {
-            products.productsList.push(new Product("Name " + i, 1000 + i, "Description " + i, i + 10.99, "Image " + i));
+            products.productsList.push(new Product("Name " + i, 1000 + i, "Description " + i, i + 10.99, "img/boat" + (+i + 1) + ".jpg"));
         }
 
         return products;

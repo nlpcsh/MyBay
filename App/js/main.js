@@ -6,14 +6,18 @@ $(document).ready(function() {
     let products = MyBayManger.getListOfProducts(produtsListId);
     let currentUser = new User("Unufri");
 
-    $("#welcome").html('Welcome to MyBay, dear ' + currentUser.uName + '!');
+    //$("#welcome").html('Welcome to MyBay, dear ' + currentUser.uName + '!');
 
     // add products using a template
     let template = Handlebars.compile(document.getElementById('products-template').innerHTML);
     document.getElementById('product-container').innerHTML = template(products);
 
-    //let productsContainer = $('#product-container');
+    //load images
+    //products.productsList.forEach(function(p) {
+    //    $("div#" + p.id).css('background', 'transparent url(' + p.image + ') no-repeat center');
+    //});
 
+    //let productsContainer = $('#product-container');
     $('#product-container').on('click', 'div', function(event) {
         let curentId = event.currentTarget.id;
 
@@ -69,19 +73,3 @@ $(document).ready(function() {
         return productsList.find(p => p.id == productId);
     }
 });
-/*
-function getTemplateAjax(path) {
-    var source;
-    var template;
-
-    $.ajax({
-        url: path, //ex. js/templates/mytemplate.handlebars
-        cache: true,
-        success: function(data) {
-            source = data;
-            template = Handlebars.compile(source);
-            $('#container').html(template);
-        }
-    });
-}
-*/

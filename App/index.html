@@ -55,13 +55,13 @@
 
         <div class="row row-offcanvas row-offcanvas-right">
 
-            <div class="col-xs-12 col-sm-9">
+            <div class="col-xs-12 col-sm-9 col-lg-9">
                 <!-- <p class="pull-right visible-xs">
                     <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
                 </p> -->
                 <div class="jumbotron">
-                    <h1 id="welcome">Welcome to MyBay!</h1>
-                    <p>This is a place to find all possible you can bay!</p>
+                    <h1 id="welcome">Welcome to MyBay, dear Custommer!</h1>
+                    <p>It is a place where you will find all you can Bay or Sail!</p>
                 </div>
                 <!-- here come the products -->
                 <div id="product-container" class="row">
@@ -70,10 +70,10 @@
                 <!--/row-->
             </div>
             <!--/.col-xs-12.col-sm-9-->
-            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
-                <div class="jumbotron">
+            <div class="col-xs-12 col-sm-3 col-lg-3 sidebar-offcanvas" id="sidebar">
+                <!-- <div class="jumbotron">
 
-                </div>
+                </div> -->
                 <table class="table jumbotron" id="added-products">
                     <caption>
                         <h3>Basket Content</h3>
@@ -103,10 +103,11 @@
     <script type="text/template" id="products-template">
         <!-- <p class="col-sm-12">List ID: {{id}}</p> -->
         {{#productsList}}
-        <div class="col-xs-6 col-lg-4 product" id={{id}}>
+        <div class="col-xs-12 col-sm-6 col-lg-4 product" id={{id}}>
             <p>
                 {{name}}
             </p>
+            <img src={{image}} alt="boat" />
             <p>
                 {{description}}
             </p>
