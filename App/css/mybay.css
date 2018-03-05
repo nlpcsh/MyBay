@@ -10,8 +10,13 @@ img {
 table {
     margin-top: 40px;
     text-align: center;
+    width: inherit;
 }
 
 table+div>p {
     font-size: 1.25em;
+}
+
+.product-name {
+    font-size: 1.15em;
 }

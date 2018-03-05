@@ -3,7 +3,7 @@
 $(document).ready(function() {
 
     let produtsListId = 1;
-    let products = MyBayManger.getListOfProducts(produtsListId);
+    let products = MyBayManger.getListOfProducts(produtsListId, db);
     let currentUser = new User("Unufri");
 
     //$("#welcome").html('Welcome to MyBay, dear ' + currentUser.uName + '!');
@@ -35,13 +35,13 @@ $(document).ready(function() {
         if (currentUser.shoppingBasket[0] == undefined) {
             toastr["warning"]("Your shopping cart is empty.");
         } else {
-            currentUser.shoppingBasket.forEach(element => {
-                if (element.qantity > 5) {
+            for (let element of currentUser.shoppingBasket) {
+                if (element.quantity > 5) {
                     let product = getProductById(products.productsList, element.productId);
-                    toastr["warning"]("Тhe selected qantity for product " + product.name + " is out of stock");
+                    toastr["warning"]("Тhe selected quantity for product " + product.name + " is out of stock");
                     return;
                 }
-            });
+            }
 
             let currentBasketData = getDataToSent(currentUser.shoppingBasket, products.productsList);
 
@@ -62,8 +62,8 @@ $(document).ready(function() {
             let product = getProductById(productsList, element.productId);
             currentBasketData.push({
                 name: product.name,
-                singleItemPrice: product.singleItemPrice,
-                quantity: element.qantity,
+                singleUnitPrice: product.singleUnitPrice,
+                quantity: element.quantity,
                 totalPrice: MyBayManger.getTotalProductsValue(currentUser.shoppingBasket, products.productsList)
             })
         });

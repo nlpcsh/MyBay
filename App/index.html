@@ -60,7 +60,7 @@
                     <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
                 </p> -->
                 <div class="jumbotron">
-                    <h1 id="welcome">Welcome to MyBay, dear Custommer!</h1>
+                    <h2 id="welcome">Welcome to MyBay, dear Custommer!</h2>
                     <p>It is a place where you will find all you can Bay or Sail!</p>
                 </div>
                 <!-- here come the products -->
@@ -87,7 +87,7 @@
                 </table>
                 <div>
                     <p>Total Value: $<span id="total-value">0</span></p>
-                    <button id="confirm-order">Confirm Order</button>
+                    <button id="confirm-order" class="btn btn-primary" type="submit">Confirm Order</button>
                 </div>
             </div>
             <!--/.sidebar-offcanvas-->
@@ -104,7 +104,7 @@
         <!-- <p class="col-sm-12">List ID: {{id}}</p> -->
         {{#productsList}}
         <div class="col-xs-12 col-sm-6 col-lg-4 product" id={{id}}>
-            <p>
+            <p class="product-name">
                 {{name}}
             </p>
             <img src={{image}} alt="boat" />
@@ -121,6 +121,7 @@
     </script>
 
     <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/data.js"></script>
     <script src="js/objects.js"></script>
     <script src="js/main.js"></script>
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
