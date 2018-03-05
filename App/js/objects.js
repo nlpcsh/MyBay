@@ -44,13 +44,13 @@ class User {
         return this._shoppingBasket;
     }
 
-    addToBasket(productIdtoAdd) {
+    addToBasket(productIdtoAdd, product) {
         function addNewProductToTable(shoppingBasket) {
             shoppingBasket.push({
                 productId: productIdtoAdd,
                 qantity: 1
             });
-            $("#added-products-table-header").after('<tr id=' + productIdtoAdd + ' > <td>' + productIdtoAdd + '</td><td>' + 1 + ' </td></tr>');
+            $("#added-products-table-header").after('<tr id=' + productIdtoAdd + ' > <td>' + product.name + '</td><td>' + 1 + ' </td></tr>');
             $("#" + productIdtoAdd + " .hidden").removeClass("hidden").addClass("remove");
         }
 
@@ -65,7 +65,7 @@ class User {
                     this._shoppingBasket[i].qantity += 1;
                     if (this._shoppingBasket[i].qantity > 5) {
                         this._shoppingBasket[i].qantity = 5;
-                        toastr["warning"]("Тhe selected quantity for product " + this._shoppingBasket[i].productId + " is out of stock");
+                        toastr["warning"]("Тhe selected quantity for product " + product.name + " is out of stock");
                         return;
                     }
                     console.log($("tr#" + productIdtoAdd + " td + td").html());
@@ -77,35 +77,10 @@ class User {
                     return;
                 }
             }
-
-            toastr["info"]("Product added: " + productIdtoAdd);
-            // this._shoppingBasket.forEach(function(p) {
-            //     if (p.productId === productIdtoAdd) {
-            //         p.qantity += 1;
-            //         if (p.qantity > 5) {
-            //             toastr["warning"]("Тhe selected quantity for product " + p.productId + " is out of stock");
-            //             return;
-            //         }
-            //         console.log($("tr#" + productIdtoAdd + " td + td").html());
-            //         $("tr#" + productIdtoAdd + " td + td").html(p.qantity);
-            //     }
-
-            // });
+            toastr["info"]("Product " + product.name + " added.");
         }
-        // for (let product in this._shoppingBasket) {
-        //     if (productIdtoAdd === product.key) {
-        //         if (product.value < 5) {
-        //             product.value += 1;
-        //             $("tr#" + product.key + " td:2").html(product.value);
-        //         } else {
-        //             toastr["warning"]("Тhe selected quantity for product " + product.key + " is out of stock");
-        //             return;
-        //         }
-        //     }
-        // }
-        // add new product if no such product exists
     }
-    removeFromBasket(productIdtoRemove) {
+    removeFromBasket(productIdtoRemove, product) {
         for (let i = 0; i < this._shoppingBasket.length; i += 1) {
             if (this._shoppingBasket[i].productId === productIdtoRemove) {
 
@@ -122,7 +97,7 @@ class User {
             }
         }
 
-        toastr["info"]("Product removed: " + productIdtoRemove);
+        toastr["info"]("Product " + product.name + " removed.");
     }
 }
 
@@ -135,10 +110,19 @@ class MyBayManger {
             productsList: []
         };
 
-        for (let i = 0; i < 5; i += 1) {
+        for (let i = 0; i < 2; i += 1) {
             products.productsList.push(new Product("Name " + i, 1000 + i, "Description " + i, i + 10.99, "Image " + i));
         }
 
         return products;
+    }
+    static getTotalProductsValue(userShopingBasket, productsList) {
+        let totalProductsValue = 0;
+        for (let item of userShopingBasket) {
+            let product = productsList.find(pr => pr.id == item.productId);
+            totalProductsValue += (item.qantity * product.singleUnitPrise);
+        }
+        console.log(totalProductsValue);
+        return totalProductsValue;
     }
 }

@@ -24,13 +24,16 @@ $(document).ready(function() {
 
         if (event.target.classList.contains('add-to-basket')) {
             //console.log(event.currentTarget.id);
-            currentUser.addToBasket(curentId);
+            //console.log(products.productsList.find(p => p.id == curentId));
+            currentUser.addToBasket(curentId, products.productsList.find(p => p.id == curentId));
         }
 
         if (event.target.classList.contains('remove-from-basket')) {
             //console.log(event.currentTarget.id);
-            currentUser.removeFromBasket(curentId);
+            currentUser.removeFromBasket(curentId, products.productsList.find(p => p.id == curentId));
         }
+        console.log(MyBayManger.getTotalProductsValue(currentUser.shoppingBasket, products.productsList));
+        $("#total-value").html(MyBayManger.getTotalProductsValue(currentUser.shoppingBasket, products.productsList));
     });
 
     /* DEBUG 
