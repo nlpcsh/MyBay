@@ -47,7 +47,8 @@ $(document).ready(function() {
 
             $.ajax({
                 type: "POST",
-                url: "someUrl",
+                //url: "someUrl",
+                url: "someURL",
                 data: currentBasketData,
                 success: toastr["success"]("Order Confirmed!")
             });

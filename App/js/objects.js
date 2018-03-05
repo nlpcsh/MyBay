@@ -1,12 +1,12 @@
 'use strict';
 
 class Product {
-    constructor(name, productId, description, singleUnitPrise, image) {
+    constructor(name, productId, description, singleUnitPrice, image) {
         this._id = productId;
         this._name = name;
         this._description = description;
         this._image = image;
-        this._singleUnitPrise = singleUnitPrise;
+        this._singleUnitPrice = singleUnitPrice;
     };
 
     get name() {
@@ -25,8 +25,8 @@ class Product {
         return this._image;
     }
 
-    get singleUnitPrise() {
-        return this._singleUnitPrise;
+    get singleUnitPrice() {
+        return this._singleUnitPrice;
     }
 };
 
@@ -48,9 +48,9 @@ class User {
         function addNewProductToTable(shoppingBasket) {
             shoppingBasket.push({
                 productId: productIdtoAdd,
-                qantity: 1
+                quantity: 1
             });
-            $("#added-products-table-header").after('<tr id=' + productIdtoAdd + ' > <td>' + product.name + '</td><td>' + product.singleUnitPrise + '</td><td class="qantity">' + 1 + ' </td><td class="unit-prise">' + product.singleUnitPrise + '</td> </tr>');
+            $("#added-products-table-header").after('<tr id=' + productIdtoAdd + ' > <td>' + product.name + '</td><td>$' + product.singleUnitPrice + '</td><td class="quantity">' + 1 + ' </td><td class="unit-price">$' + product.singleUnitPrice + '</td> </tr>');
             $("#" + productIdtoAdd + " .hidden").removeClass("hidden").addClass("remove");
             toastr["info"]("Product " + product.name + " added.");
         }
@@ -63,11 +63,11 @@ class User {
             for (let i = 0; i < this._shoppingBasket.length; i += 1) {
                 if (this._shoppingBasket[i].productId === productIdtoAdd) {
                     counter += 1;
-                    this._shoppingBasket[i].qantity += 1;
+                    this._shoppingBasket[i].quantity += 1;
 
 
-                    $("tr#" + productIdtoAdd + " .qantity").html(this._shoppingBasket[i].qantity);
-                    $("tr#" + productIdtoAdd + " .unit-prise").html(this._shoppingBasket[i].qantity * product.singleUnitPrise);
+                    $("tr#" + productIdtoAdd + " .quantity").html(this._shoppingBasket[i].quantity);
+                    $("tr#" + productIdtoAdd + " .unit-price").html('$' + (this._shoppingBasket[i].quantity * product.singleUnitPrice));
                 }
                 // last loop - if product not present  - add to the list
                 if ((counter == 0) && (i == this._shoppingBasket.length - 1)) {
@@ -82,16 +82,16 @@ class User {
         for (let i = 0; i < this._shoppingBasket.length; i += 1) {
             if (this._shoppingBasket[i].productId === productIdtoRemove) {
 
-                this._shoppingBasket[i].qantity -= 1;
-                if (this._shoppingBasket[i].qantity == 0) {
+                this._shoppingBasket[i].quantity -= 1;
+                if (this._shoppingBasket[i].quantity == 0) {
                     this._shoppingBasket.splice(i, 1);
                     $("#added-products tr#" + productIdtoRemove).remove();
                     $("#" + productIdtoRemove + " .remove").removeClass("remove").addClass("hidden");
                     toastr["info"]("Product " + product.name + " removed.");
                     return;
                 }
-                $("tr#" + productIdtoRemove + " .qantity").html(this._shoppingBasket[i].qantity);
-                $("tr#" + productIdtoRemove + " .unit-prise").html(this._shoppingBasket[i].qantity * product.singleUnitPrise);
+                $("tr#" + productIdtoRemove + " .quantity").html(this._shoppingBasket[i].quantity);
+                $("tr#" + productIdtoRemove + " .unit-price").html('$' + (this._shoppingBasket[i].quantity * product.singleUnitPrice));
             }
         }
         toastr["info"]("Product " + product.name + " removed.");
@@ -117,7 +117,7 @@ class MyBayManger {
         let totalProductsValue = 0;
         for (let item of userShopingBasket) {
             let product = productsList.find(pr => pr.id == item.productId);
-            totalProductsValue += (item.qantity * product.singleUnitPrise);
+            totalProductsValue += (item.quantity * product.singleUnitPrice);
         }
         console.log(totalProductsValue);
         return totalProductsValue;

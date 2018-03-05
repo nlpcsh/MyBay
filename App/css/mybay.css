@@ -11,3 +11,7 @@ table {
     margin-top: 40px;
     text-align: center;
 }
+
+table+div>p {
+    font-size: 1.25em;
+}
