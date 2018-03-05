@@ -18,9 +18,18 @@ $(document).ready(function() {
     productsContainer.on('click', 'div', function(event) {
         let curentId = event.currentTarget.id;
 
-        if (event.target.innerHTML == "Add to Basket") {
-            console.log(event.currentTarget.id);
+        console.log(event.currentTarget.id);
+        console.log(event.target.innerHTML);
+        console.log(event.target.classList.contains('add-to-basket'));
+
+        if (event.target.classList.contains('add-to-basket')) {
+            //console.log(event.currentTarget.id);
             currentUser.addToBasket(curentId);
+        }
+
+        if (event.target.classList.contains('remove-from-basket')) {
+            //console.log(event.currentTarget.id);
+            currentUser.removeFromBasket(curentId);
         }
     });
 

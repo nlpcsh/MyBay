@@ -51,6 +51,7 @@ class User {
                 qantity: 1
             });
             $("#added-products-table-header").after('<tr id=' + productIdtoAdd + ' > <td>' + productIdtoAdd + '</td><td>' + 1 + ' </td></tr>');
+            $("#" + productIdtoAdd + " .hidden").removeClass("hidden").addClass("remove");
         }
 
         // add quantoty if the product exists
@@ -63,6 +64,7 @@ class User {
                     counter += 1;
                     this._shoppingBasket[i].qantity += 1;
                     if (this._shoppingBasket[i].qantity > 5) {
+                        this._shoppingBasket[i].qantity = 5;
                         toastr["warning"]("Тhe selected quantity for product " + this._shoppingBasket[i].productId + " is out of stock");
                         return;
                     }
@@ -72,6 +74,7 @@ class User {
                 // last loop - if product not present  - add to the list
                 if ((counter == 0) && (i == this._shoppingBasket.length - 1)) {
                     addNewProductToTable(this._shoppingBasket);
+                    return;
                 }
             }
 
@@ -102,8 +105,24 @@ class User {
         // }
         // add new product if no such product exists
     }
-    removeFromBasket(product) {
-        shoppingBasket.remove(product);
+    removeFromBasket(productIdtoRemove) {
+        for (let i = 0; i < this._shoppingBasket.length; i += 1) {
+            if (this._shoppingBasket[i].productId === productIdtoRemove) {
+
+                this._shoppingBasket[i].qantity -= 1;
+                if (this._shoppingBasket[i].qantity == 0) {
+                    this._shoppingBasket.splice(i, 1);
+                    console.log($("tr#" + productIdtoRemove));
+                    $("#added-products tr#" + productIdtoRemove).remove();
+                    $("#" + productIdtoRemove + " .remove").removeClass("remove").addClass("hidden");
+                    return;
+                }
+                console.log($("tr#" + productIdtoRemove + " td + td").html());
+                $("tr#" + productIdtoRemove + " td + td").html(this._shoppingBasket[i].qantity);
+            }
+        }
+
+        toastr["info"]("Product removed: " + productIdtoRemove);
     }
 }
 
