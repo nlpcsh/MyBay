@@ -52,6 +52,7 @@ class User {
             });
             $("#added-products-table-header").after('<tr id=' + productIdtoAdd + ' > <td>' + product.name + '</td><td>' + 1 + ' </td></tr>');
             $("#" + productIdtoAdd + " .hidden").removeClass("hidden").addClass("remove");
+            toastr["info"]("Product " + product.name + " added.");
         }
 
         // add quantoty if the product exists
@@ -68,7 +69,7 @@ class User {
                         toastr["warning"]("Тhe selected quantity for product " + product.name + " is out of stock");
                         return;
                     }
-                    console.log($("tr#" + productIdtoAdd + " td + td").html());
+
                     $("tr#" + productIdtoAdd + " td + td").html(this._shoppingBasket[i].qantity);
                 }
                 // last loop - if product not present  - add to the list
@@ -87,16 +88,14 @@ class User {
                 this._shoppingBasket[i].qantity -= 1;
                 if (this._shoppingBasket[i].qantity == 0) {
                     this._shoppingBasket.splice(i, 1);
-                    console.log($("tr#" + productIdtoRemove));
                     $("#added-products tr#" + productIdtoRemove).remove();
                     $("#" + productIdtoRemove + " .remove").removeClass("remove").addClass("hidden");
+                    toastr["info"]("Product " + product.name + " removed.");
                     return;
                 }
-                console.log($("tr#" + productIdtoRemove + " td + td").html());
                 $("tr#" + productIdtoRemove + " td + td").html(this._shoppingBasket[i].qantity);
             }
         }
-
         toastr["info"]("Product " + product.name + " removed.");
     }
 }
