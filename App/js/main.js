@@ -52,12 +52,14 @@ $(document).ready(function() {
 
     function getDataToSent(shoppingBasket, productsList) {
         let currentBasketData = new Array();
+
         shoppingBasket.forEach(element => {
             let product = getProductById(productsList, element.productId);
             currentBasketData.push({
                 name: product.name,
                 singleItemPrice: product.singleItemPrice,
-                quantity: element.qantity
+                quantity: element.qantity,
+                totalPrice: MyBayManger.getTotalProductsValue(currentUser.shoppingBasket, products.productsList)
             })
         });
         return currentBasketData;
