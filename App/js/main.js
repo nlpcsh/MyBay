@@ -12,23 +12,60 @@ $(document).ready(function() {
     let template = Handlebars.compile(document.getElementById('products-template').innerHTML);
     document.getElementById('product-container').innerHTML = template(products);
 
-    let productsContainer = $('#product-container');
+    //let productsContainer = $('#product-container');
 
-    productsContainer.on('click', 'div', function(event) {
+    $('#product-container').on('click', 'div', function(event) {
         let curentId = event.currentTarget.id;
 
         if (event.target.classList.contains('add-to-basket')) {
-
-            currentUser.addToBasket(curentId, products.productsList.find(p => p.id == curentId));
+            currentUser.addToBasket(curentId, getProductById(products.productsList, curentId));
         }
 
         if (event.target.classList.contains('remove-from-basket')) {
-            currentUser.removeFromBasket(curentId, products.productsList.find(p => p.id == curentId));
+            currentUser.removeFromBasket(curentId, getProductById(products.productsList, curentId));
         }
         $("#total-value").html(MyBayManger.getTotalProductsValue(currentUser.shoppingBasket, products.productsList));
     });
 
+    $("#confirm-order").on('click', function() {
+        if (currentUser.shoppingBasket[0] == undefined) {
+            toastr["warning"]("Your shopping cart is empty.");
+        } else {
+            currentUser.shoppingBasket.forEach(element => {
+                if (element.qantity > 5) {
+                    let product = getProductById(products.productsList, element.productId);
+                    toastr["warning"]("Тhe selected qantity for product " + product.name + " is out of stock");
+                    return;
+                }
+            });
 
+            let currentBasketData = getDataToSent(currentUser.shoppingBasket, products.productsList);
+
+            $.ajax({
+                type: "POST",
+                url: "someUrl",
+                data: currentBasketData,
+                success: toastr["success"]("Order Confirmed!")
+            });
+        }
+    });
+
+    function getDataToSent(shoppingBasket, productsList) {
+        let currentBasketData = new Array();
+        shoppingBasket.forEach(element => {
+            let product = getProductById(productsList, element.productId);
+            currentBasketData.push({
+                name: product.name,
+                singleItemPrice: product.singleItemPrice,
+                quantity: element.qantity
+            })
+        });
+        return currentBasketData;
+    }
+
+    function getProductById(productsList, productId) {
+        return productsList.find(p => p.id == productId);
+    }
 });
 /*
 function getTemplateAjax(path) {

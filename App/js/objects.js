@@ -64,11 +64,7 @@ class User {
                 if (this._shoppingBasket[i].productId === productIdtoAdd) {
                     counter += 1;
                     this._shoppingBasket[i].qantity += 1;
-                    if (this._shoppingBasket[i].qantity > 5) {
-                        this._shoppingBasket[i].qantity = 5;
-                        toastr["warning"]("Тhe selected qantity for product " + product.name + " is out of stock");
-                        return;
-                    }
+
 
                     $("tr#" + productIdtoAdd + " .qantity").html(this._shoppingBasket[i].qantity);
                     $("tr#" + productIdtoAdd + " .unit-prise").html(this._shoppingBasket[i].qantity * product.singleUnitPrise);
