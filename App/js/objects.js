@@ -50,7 +50,7 @@ class User {
                 productId: productIdtoAdd,
                 qantity: 1
             });
-            $("#added-products-table-header").after('<tr id=' + productIdtoAdd + ' > <td>' + product.name + '</td><td>' + 1 + ' </td></tr>');
+            $("#added-products-table-header").after('<tr id=' + productIdtoAdd + ' > <td>' + product.name + '</td><td>' + product.singleUnitPrise + '</td><td class="qantity">' + 1 + ' </td><td class="unit-prise">' + product.singleUnitPrise + '</td> </tr>');
             $("#" + productIdtoAdd + " .hidden").removeClass("hidden").addClass("remove");
             toastr["info"]("Product " + product.name + " added.");
         }
@@ -66,11 +66,12 @@ class User {
                     this._shoppingBasket[i].qantity += 1;
                     if (this._shoppingBasket[i].qantity > 5) {
                         this._shoppingBasket[i].qantity = 5;
-                        toastr["warning"]("Тhe selected quantity for product " + product.name + " is out of stock");
+                        toastr["warning"]("Тhe selected qantity for product " + product.name + " is out of stock");
                         return;
                     }
 
-                    $("tr#" + productIdtoAdd + " td + td").html(this._shoppingBasket[i].qantity);
+                    $("tr#" + productIdtoAdd + " .qantity").html(this._shoppingBasket[i].qantity);
+                    $("tr#" + productIdtoAdd + " .unit-prise").html(this._shoppingBasket[i].qantity * product.singleUnitPrise);
                 }
                 // last loop - if product not present  - add to the list
                 if ((counter == 0) && (i == this._shoppingBasket.length - 1)) {
@@ -93,7 +94,8 @@ class User {
                     toastr["info"]("Product " + product.name + " removed.");
                     return;
                 }
-                $("tr#" + productIdtoRemove + " td + td").html(this._shoppingBasket[i].qantity);
+                $("tr#" + productIdtoRemove + " .qantity").html(this._shoppingBasket[i].qantity);
+                $("tr#" + productIdtoRemove + " .unit-prise").html(this._shoppingBasket[i].qantity * product.singleUnitPrise);
             }
         }
         toastr["info"]("Product " + product.name + " removed.");
@@ -109,7 +111,7 @@ class MyBayManger {
             productsList: []
         };
 
-        for (let i = 0; i < 2; i += 1) {
+        for (let i = 0; i < 5; i += 1) {
             products.productsList.push(new Product("Name " + i, 1000 + i, "Description " + i, i + 10.99, "Image " + i));
         }
 

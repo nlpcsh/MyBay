@@ -14,10 +14,12 @@
     -->
     <link rel="stylesheet" href="libs/toastr/toastr.min.css">
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
-
+    <!-- <script src="libs/require/require.js"></script> -->
     <script src="libs/jQuery/jquery-3.3.1.min.js"></script>
     <script src="libs/toastr/toastr.min.js"></script>
     <script src="libs/handlebars/handlebars.min.js"></script>
+    <!-- <script src="libs/sammy/sammy-latest.min.js"></script> -->
+
 
     <title>MyBay</title>
 </head>
@@ -37,18 +39,19 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
+                    <li class="active"><a href="#">Products</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="#login" id="login" class="hidden">Login</a></li>
-                    <li><a href="#sign-out" id="sigh-out">Sign Out</a></li>
+                    <li><a href="#login" id="login">Login</a></li>
+                    <li><a href="#sign-out" id="sigh-out" class="hidden">Sign Out</a></li>
+                    <li><a href="#basket" id="basket" class="float-right">Basket</a></li>
                 </ul>
             </div>
             <!-- /.nav-collapse -->
         </div>
         <!-- /.container -->
     </nav>
-    <div class="container">
+    <div class="container" id="main-content">
 
         <div class="row row-offcanvas row-offcanvas-right">
 
@@ -77,15 +80,15 @@
                     </caption>
                     <tr id="added-products-table-header">
                         <th>Product</th>
+                        <th>Unit Prise</th>
                         <th>Qantity</th>
-                    </tr>
-                    <tr>
-                        <td>Total Value</td>
-                        <td id="total-value">0</td>
+                        <th>Total</th>
                     </tr>
                 </table>
-
-                <button id="confirm-order">Confirm Order</button>
+                <div>
+                    <p>Total Value: <span id="total-value">0</span></p>
+                    <button id="confirm-order">Confirm Order</button>
+                </div>
             </div>
             <!--/.sidebar-offcanvas-->
         </div>
