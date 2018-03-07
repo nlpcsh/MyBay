@@ -22,11 +22,11 @@ $(document).ready(function() {
         let curentId = event.currentTarget.id;
 
         if (event.target.classList.contains('add-to-basket')) {
-            currentUser.addToBasket(curentId, getProductById(products.productsList, curentId));
+            currentUser.addToBasket(getProductById(products.productsList, curentId));
         }
 
         if (event.target.classList.contains('remove-from-basket')) {
-            currentUser.removeFromBasket(curentId, getProductById(products.productsList, curentId));
+            currentUser.removeFromBasket(curentId);
         }
         $("#total-value").html(MyBayManger.getTotalProductsValue(currentUser.shoppingBasket, products.productsList));
     });
@@ -58,12 +58,11 @@ $(document).ready(function() {
     function getDataToSent(shoppingBasket, productsList) {
         let currentBasketData = new Array();
 
-        shoppingBasket.forEach(element => {
-            let product = getProductById(productsList, element.productId);
+        shoppingBasket.forEach(product => {
             currentBasketData.push({
                 name: product.name,
                 singleUnitPrice: product.singleUnitPrice,
-                quantity: element.quantity,
+                quantity: product.quantity,
                 totalPrice: MyBayManger.getTotalProductsValue(currentUser.shoppingBasket, products.productsList)
             })
         });
