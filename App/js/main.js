@@ -21,18 +21,7 @@ $(document).ready(function() {
             console.log('Products!!!');
             $('#product-container').html(productstemplate(products));
             //let productsContainer = $('#product-container');
-            $('#product-container').on('click', 'div', function(event) {
-                let curentId = event.currentTarget.id;
 
-                if (event.target.classList.contains('add-to-basket')) {
-                    currentUser.addToBasket(getProductById(products.productsList, curentId));
-                }
-
-                if (event.target.classList.contains('remove-from-basket')) {
-                    currentUser.removeFromBasket(curentId);
-                }
-                $("#total-value").html(MyBayManger.getTotalProductsValue(currentUser.shoppingBasket, products.productsList));
-            });
             // add Remove button if necessary
             currentUser.shoppingBasket.forEach(p => {
                 if (p.quantity > 0) {
@@ -46,10 +35,12 @@ $(document).ready(function() {
 
             let basketTemplate = Handlebars.compile(document.getElementById('basket-template').innerHTML);
             $('#product-container').html(basketTemplate(currentUser));
-
+            // calculate total price for a product
             currentUser.shoppingBasket.forEach(p => {
                 $("tr#" + p.productId + " .unit-price").html('$' + (p.quantity * p.singleUnitPrice));
             });
+            // set total value
+            $("#total-value").html(MyBayManger.getTotalProductsValue(currentUser.shoppingBasket, products.productsList));
 
             $("#confirm-order").on('click', function() {
                 if (currentUser.shoppingBasket[0] == undefined) {
@@ -85,6 +76,19 @@ $(document).ready(function() {
         //    $("div#" + p.id).css('background', 'transparent url(' + p.image + ') no-repeat center');
         //});
 
+    });
+
+    $('#product-container').on('click', 'div', function(event) {
+        let curentId = event.currentTarget.id;
+
+        if (event.target.classList.contains('add-to-basket')) {
+            currentUser.addToBasket(getProductById(products.productsList, curentId));
+        }
+
+        if (event.target.classList.contains('remove-from-basket')) {
+            currentUser.removeFromBasket(curentId);
+        }
+        //$("#total-value").html(MyBayManger.getTotalProductsValue(currentUser.shoppingBasket, products.productsList));
     });
 
     function getDataToSent(shoppingBasket, productsList) {
