@@ -14,11 +14,11 @@ $(document).ready(function() {
 
     let sammyApp = Sammy("#product-container", function() {
         this.get('#/', function() {
-            console.log('Home!!!');
+            //console.log('Home!!!');
             $('#product-container').html(productstemplate(products));
         });
         this.get('#/products', function() {
-            console.log('Products!!!');
+            //console.log('Products!!!');
             $('#product-container').html(productstemplate(products));
             //let productsContainer = $('#product-container');
 
@@ -89,6 +89,12 @@ $(document).ready(function() {
             currentUser.removeFromBasket(curentId);
         }
         //$("#total-value").html(MyBayManger.getTotalProductsValue(currentUser.shoppingBasket, products.productsList));
+    });
+    // make 
+    $('.nav.navbar-nav').on('click', 'li', function(event) {
+        let $this = $(this);
+        $('.active').removeClass('active');
+        $this.addClass('active');
     });
 
     function getDataToSent(shoppingBasket, productsList) {
