@@ -17,6 +17,14 @@ table+div>p {
     font-size: 1.25em;
 }
 
+h2 {
+    text-align: center;
+}
+
+h2+p {
+    text-align: center;
+}
+
 .product-name {
     font-size: 1.15em;
 }
