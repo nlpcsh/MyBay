@@ -52,7 +52,7 @@ class User {
                 singleUnitPrice: product.singleUnitPrice,
                 quantity: 1
             });
-            $("#added-products-table-header").after('<tr id=' + product.id + ' > <td>' + product.name + '</td><td>$' + product.singleUnitPrice + '</td><td class="quantity">' + 1 + ' </td><td class="unit-price">$' + product.singleUnitPrice + '</td> </tr>');
+            //$("#added-products-table-header").after('<tr id=' + product.id + ' > <td>' + product.name + '</td><td>$' + product.singleUnitPrice + '</td><td class="quantity">' + 1 + ' </td><td class="unit-price">$' + product.singleUnitPrice + '</td> </tr>');
             $("#" + product.id + " .hidden").removeClass("hidden").addClass("remove");
             toastr["info"]("Product " + product.name + " added.");
         }
@@ -67,8 +67,8 @@ class User {
                     counter += 1;
                     this._shoppingBasket[i].quantity += 1;
 
-                    $("tr#" + product.id + " .quantity").html(this._shoppingBasket[i].quantity);
-                    $("tr#" + product.id + " .unit-price").html('$' + (this._shoppingBasket[i].quantity * product.singleUnitPrice));
+                    //$("tr#" + product.id + " .quantity").html(this._shoppingBasket[i].quantity);
+                    //$("tr#" + product.id + " .unit-price").html('$' + (this._shoppingBasket[i].quantity * product.singleUnitPrice));
                 }
                 // last loop - if product not present  - add to the list
                 if ((counter == 0) && (i == this._shoppingBasket.length - 1)) {
@@ -87,13 +87,13 @@ class User {
                 this._shoppingBasket[i].quantity -= 1;
                 if (this._shoppingBasket[i].quantity == 0) {
                     this._shoppingBasket.splice(i, 1);
-                    $("#added-products tr#" + productIdtoRemove).remove();
+                    //$("#added-products tr#" + productIdtoRemove).remove();
                     $("#" + productIdtoRemove + " .remove").removeClass("remove").addClass("hidden");
                     toastr["info"]("Product " + productToRemoveName + " removed.");
                     return;
                 }
-                $("tr#" + productIdtoRemove + " .quantity").html(this._shoppingBasket[i].quantity);
-                $("tr#" + productIdtoRemove + " .unit-price").html('$' + (this._shoppingBasket[i].quantity * this._shoppingBasket[i].singleUnitPrice));
+                //$("tr#" + productIdtoRemove + " .quantity").html(this._shoppingBasket[i].quantity);
+                //$("tr#" + productIdtoRemove + " .unit-price").html('$' + (this._shoppingBasket[i].quantity * this._shoppingBasket[i].singleUnitPrice));
             }
         }
         toastr["info"]("Product " + productToRemoveName + " removed.");
