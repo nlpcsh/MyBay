@@ -5,17 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Unit testing with Mocha",
-            "type": "node",
+            "name": "Launch Chrome against localhost",
+            "type": "chrome",
             "request": "launch",
-            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
-            "stopOnEntry": false,
-            "args": [
-                "--no-timeouts",
-                "--colors",
-                "${relativeFile}"
-            ],
-            "cwd": "${workspaceRoot}"
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name": "Launch index.html (disable sourcemaps)",
+            "type": "chrome",
+            "request": "launch",
+            "sourceMaps": false,
+            "file": "${workspaceFolder}/indexTests.html"
         },
     ]
 }

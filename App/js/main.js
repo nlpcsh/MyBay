@@ -48,13 +48,13 @@ $(document).ready(function() {
                 } else {
                     for (let element of currentUser.shoppingBasket) {
                         if (element.quantity > 5) {
-                            let product = getProductById(products.productsList, element.productId);
+                            let product = getProductById(products, element.productId);
                             toastr["warning"]("Тhe selected quantity for product " + product.name + " is out of stock");
                             return;
                         }
                     }
 
-                    let currentBasketData = getDataToSent(currentUser.shoppingBasket, products.productsList);
+                    let currentBasketData = getDataToSent(currentUser, products);
 
                     $.ajax({
                         type: "POST",
@@ -82,7 +82,7 @@ $(document).ready(function() {
         let curentId = event.currentTarget.id;
 
         if (event.target.classList.contains('add-to-basket')) {
-            currentUser.addToBasket(getProductById(products.productsList, curentId));
+            currentUser.addToBasket(getProductById(products, curentId));
         }
 
         if (event.target.classList.contains('remove-from-basket')) {
@@ -96,22 +96,6 @@ $(document).ready(function() {
         $('.active').removeClass('active');
         $this.addClass('active');
     });
-
-    function getDataToSent(shoppingBasket, productsList) {
-        let currentBasketData = new Array();
-
-        shoppingBasket.forEach(product => {
-            currentBasketData.push({
-                name: product.name,
-                singleUnitPrice: product.singleUnitPrice,
-                quantity: product.quantity,
-                totalPrice: MyBayManger.getTotalProductsValue(currentUser.shoppingBasket, products.productsList)
-            })
-        });
-        return currentBasketData;
-    }
-
-    function getProductById(productsList, productId) {
-        return productsList.find(p => p.id == productId);
-    }
 });
+
+
