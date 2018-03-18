@@ -1,16 +1,21 @@
-//mocha.setup('bdd');
+'use strict';
 
-let chai = require('chai');
-const {expect, assert} = chai;
+mocha.setup('bdd');
 
-describe('Testing', function(){
-    it('Test 1', function(){
-        chai.expect(2).to.eq(2);
+//let chai = require('chai');
+const { expect, assert } = chai;
+
+describe('Testing', function() {
+    describe('Testing', function() {
+
+        it('Test 1', function() {
+            expect(getProductById).to.be.a('function');
+            //expect(getProductById).to.eq(2);
+        });
+        it('Test 1', function() {
+            assert.equal(2, 2);
+        });
     });
-    it('Test 1', function(){
-        chai.assert.equal(2, 2);
-    });
-
 });
 
-//mocha.run();
+mocha.run();
