@@ -5,6 +5,13 @@ mocha.setup('bdd');
 //let chai = require('chai');
 const { expect, assert } = chai;
 
+// dummy toaster messages
+let toastr = {
+    'info': function(message) {
+        return message;
+    },
+};
+
 describe('Testing JS', function() {
     describe('Testing Helpers', function() {
 
@@ -77,7 +84,7 @@ describe('Testing JS', function() {
         let dataToSend = getDataToSent(currentUser, products);
 
         it('Assert getDataToSent return Array', function() {
-            assert.equal(Array.isArray(dataToSend), true);
+            assert(Array.isArray(dataToSend));
         });
 
         it('Expect getDataToSent to have proper quantity', function() {
