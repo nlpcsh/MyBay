@@ -115,8 +115,17 @@ describe('Testing JS', function() {
                 it('Expect Product to be an object', function() {
                     expect(Product).to.be.a('function');
                 });
-                let justProduct = new Product('Boat3', 3333, 'txt3', 33, 'img/boat3.jpg');
+                it('Expect Product to throw if there are no 5 arguments', function() {
+                    expect(() => { new Product() }).to.throw('Product must have 5 arguments');
+                });
+                it('Expect Product to throw if the price is not valid', function() {
+                    expect(() => { new Product('Boat3', 3333, 'txt3', 'abc', 'img/boat3.jpg') }).to.throw('Product price must be a number');
+                });
+                it('Expect Product to throw if the price is negative number', function() {
+                    expect(() => { new Product('Boat3', 3333, 'txt3', -33, 'img/boat3.jpg') }).to.throw('Product price must be a positive number');
+                });
 
+                let justProduct = new Product('Boat3', 3333, 'txt3', 33, 'img/boat3.jpg');
                 it('Expect Product has name', function() {
                     expect(justProduct).to.has.property('name').equal('Boat3');
                 });
