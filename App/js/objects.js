@@ -5,8 +5,8 @@ class Product {
         this._id = productId;
         this._name = name;
         this._description = description;
-        this._image = image;
         this._singleUnitPrice = singleUnitPrice;
+        this._image = image;
     };
 
     get name() {
@@ -21,12 +21,12 @@ class Product {
         return this._description;
     }
 
-    get image() {
-        return this._image;
-    }
-
     get singleUnitPrice() {
         return this._singleUnitPrice;
+    }
+
+    get image() {
+        return this._image;
     }
 }
 
