@@ -83,12 +83,12 @@ describe('Testing JS', function() {
 
         let dataToSend = getDataToSent(currentUser, products);
 
-        it('Assert getDataToSent return Array', function() {
-            assert(Array.isArray(dataToSend));
+        it('Expect getDataToSent return Array', function() {
+            expect(dataToSend).to.be.instanceof(Array);
         });
 
         it('Expect getDataToSent return Array with proper length', function() {
-            expect(dataToSend).to.have.length(2);
+            expect(dataToSend).to.have.length(3);
         });
 
         it('Expect getDataToSent array objects to have correct quantity', function() {
@@ -107,8 +107,7 @@ describe('Testing JS', function() {
         });
 
         it('Expect getDataToSent array objects to have proper Total Price', function() {
-            expect(dataToSend[0]).to.has.property('totalPrice').equal(88);
-            expect(dataToSend[1]).to.has.property('totalPrice').equal(88);
+            expect(dataToSend[2]).to.has.property('totalPrice').equal(88);
         });
         describe('Testing Objects', function() {
             describe('Testing Product', function() {
