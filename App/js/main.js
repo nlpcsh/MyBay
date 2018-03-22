@@ -13,11 +13,17 @@ $(document).ready(function() {
     //document.getElementById('product-container').innerHTML = productstemplate(products);
 
     let sammyApp = Sammy("#product-container", function() {
-        this.get('#/', function() {
+        this.get('#/', homeController.all);
+        // https://youtu.be/T0jtFmFPU-4?t=1648
+        /*function() {
             //console.log('Home!!!');
             $('#product-container').html(productstemplate(products));
+
         });
-        this.get('#/products', function() {
+        */
+        this.get('#/products', homeController.all);
+        
+        /*function() {
             //console.log('Products!!!');
             $('#product-container').html(productstemplate(products));
             //let productsContainer = $('#product-container');
@@ -28,8 +34,9 @@ $(document).ready(function() {
                     $("#" + p.productId + " .hidden").removeClass("hidden").addClass("remove");
                 }
             });
+        }
+        );*/
 
-        });
         this.get('#/basket', function() {
             console.log('Basket!!!');
 
