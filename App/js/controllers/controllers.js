@@ -9,22 +9,74 @@ let homeController = function () {
             //$('#content').html(html);
             context.$element().html(html);
         });
-        
-            // add Remove button if necessary
-            currentUser.shoppingBasket.forEach(p => {
-                if (p.quantity > 0) {
-                    $("#" + p.productId + " .hidden").removeClass("hidden").addClass("remove");
-                }
-            });
         */
 
-        templates.get('product').then(function (template){
-            context.$element().html(template(products));
-        });
-
+        templates.get('product')
+            .then(function (template){
+                context.$element().html(template(products));
+            })
+            .then( function () {
+                // add Remove button if necessary
+                currentUser.shoppingBasket.forEach(p => {
+                    if (p.quantity > 0) {
+                        $("#" + p.productId + " .hidden").removeClass("hidden").addClass("remove");
+                    }
+                });
+            });
     }
 
     return {
         all: all
+    }
+}();
+
+let basketController = function () {
+
+    function basket(context) {
+
+        //let basketTemplate = Handlebars.compile(document.getElementById('basket-template').innerHTML);
+        //$('#product-container').html(basketTemplate(currentUser));
+
+        templates.get('basket')
+        .then(function (template){
+                context.$element().html(template(currentUser));
+            })
+        .then(function () {
+
+            // calculate total price for a product
+            currentUser.shoppingBasket.forEach(p => {
+                $("tr#" + p.productId + " .unit-price").html('$' + (p.quantity * p.singleUnitPrice));
+            });
+            // set total value
+            $("#total-value").html(MyBayManger.getTotalProductsValue(currentUser.shoppingBasket, products.productsList));
+
+            $("#confirm-order").on('click', function() {
+                if (currentUser.shoppingBasket[0] == undefined) {
+                    toastr["warning"]("Your shopping cart is empty.");
+                } else {
+                    for (let element of currentUser.shoppingBasket) {
+                        if (element.quantity > 5) {
+                            let product = getProductById(products, element.productId);
+                            toastr["warning"]("Тhe selected quantity for product " + product.name + " is out of stock");
+                            return;
+                        }
+                    }
+
+                    let currentBasketData = getDataToSent(currentUser, products);
+
+                    $.ajax({
+                        type: "POST",
+                        //url: "someUrl",
+                        url: "someURL",
+                        data: currentBasketData,
+                        success: toastr["success"]("Order Confirmed!")
+                    });
+                }
+            });
+        })
+    }
+
+    return {
+        basket: basket
     }
 }();

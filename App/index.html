@@ -80,54 +80,7 @@
 
     </div>
     <!--/.container-->
-    <!-- <script type="text/x-handlebars-template" id="products-template">
-        {{#productsList}}
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 product" id={{id}}>
-            <p class="product-name">
-                {{name}}
-            </p>
-            <img src={{image}} alt="boat" />
-            <p>
-                {{description}}
-            </p>
-            <p>
-                Cost: ${{singleUnitPrice}}
-            </p>
-            <button class="add-to-basket">Add to Basket</button>
-            <button class="remove-from-basket hidden">Remove from Basket</buton>
-        </div>
-        {{/productsList}}
-    </script> -->
-    <script type="text/x-handlebars-template" id="basket-template">
-        <div class="col-xs-12 col-sm-12 col-lg-12 sidebar-offcanvas" id="sidebar">
-            <!-- <div class="jumbotron">
-            </div> -->
-            <table class="table jumbotron" id="added-products">
-                <caption>
-                    <h3>Basket Content</h3>
-                </caption>
-                <tr id="added-products-table-header">
-                    <th>Product</th>
-                    <th>Unit Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                </tr>
-                {{#shoppingBasket}}
-                <tr id={{productId}}> 
-                    <td>{{name}}</td>
-                    <td>${{singleUnitPrice}}</td>
-                    <td class="quantity">{{quantity}}</td>
-                    <td class="unit-price">$0</td>
-                </tr>
-                {{/shoppingBasket}}
-            </table>
-            <div>
-                <p>Total Value: $<span id="total-value">0</span></p>
-                <button id="confirm-order" class="btn btn-primary" type="submit">Confirm Order</button>
-        </div>
-        </div>
-        <!--/.sidebar-offcanvas-->
-    </script>
+
     <script src="libs/bootstrap/js/bootstrap.min.js"></script>
     <script src="js/data.js"></script>
     <script src="js/objects.js"></script>
