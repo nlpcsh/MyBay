@@ -1,6 +1,6 @@
 'use strict';
 
-function homeController() {
+let homeController = function () {
 
     function all(context){
         
@@ -21,4 +21,4 @@ function homeController() {
     return {
         all: all
     }
-}
+}();
