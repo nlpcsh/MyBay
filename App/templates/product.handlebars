@@ -1,5 +1,16 @@
-<ul>
-    <li>
-        Something
-    </li>
-</ul>
+{{#productsList}}
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 product" id={{id}}>
+    <p class="product-name">
+        {{name}}
+    </p>
+    <img src={{image}} alt="boat" />
+    <p>
+        {{description}}
+    </p>
+    <p>
+        Cost: ${{singleUnitPrice}}
+    </p>
+    <button class="add-to-basket">Add to Basket</button>
+    <button class="remove-from-basket hidden">Remove from Basket</buton>
+</div>
+{{/productsList}}

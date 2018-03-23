@@ -1,15 +1,15 @@
 'use strict';
 
-$(document).ready(function() {
+let produtsListId = 1;
+let products = MyBayManger.getListOfProducts(produtsListId, db);
+let currentUser = new User("Unufri");
 
-    let produtsListId = 1;
-    let products = MyBayManger.getListOfProducts(produtsListId, db);
-    let currentUser = new User("Unufri");
+$(document).ready(function() {
 
     //$("#welcome").html('Welcome to MyBay, dear ' + currentUser.uName + '!');
 
     // add products using a template
-    let productstemplate = Handlebars.compile(document.getElementById('products-template').innerHTML);
+    //let productstemplate = Handlebars.compile(document.getElementById('products-template').innerHTML);
     //document.getElementById('product-container').innerHTML = productstemplate(products);
 
     let sammyApp = Sammy("#product-container", function() {

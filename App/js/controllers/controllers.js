@@ -19,7 +19,7 @@ let homeController = function () {
         */
 
         templates.get('product').then(function (template){
-            context.$element().html(template());
+            context.$element().html(template(products));
         });
 
     }
