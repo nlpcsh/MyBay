@@ -7,9 +7,11 @@ function getDataToSent(currentUser, products) {
         currentBasketData.push({
             name: product.name,
             singleUnitPrice: product.singleUnitPrice,
-            quantity: product.quantity,
-            totalPrice: MyBayManger.getTotalProductsValue(currentUser.shoppingBasket, products.productsList)
+            quantity: product.quantity
         })
+    });
+    currentBasketData.push({
+        totalPrice: MyBayManger.getTotalProductsValue(currentUser.shoppingBasket, products.productsList)
     });
     return currentBasketData;
 }

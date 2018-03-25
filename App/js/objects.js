@@ -2,11 +2,20 @@
 
 class Product {
     constructor(name, productId, description, singleUnitPrice, image) {
+        if (arguments.length != 5) {
+            throw new Error('Product must have 5 arguments');
+        }
+        if (typeof(arguments[3]) != 'number') {
+            throw new Error('Product price must be a number');
+        }
+        if ((typeof(+arguments[3]) == 'number') && (+arguments[3] < 0)) {
+            throw new Error('Product price must be a positive number');
+        }
         this._id = productId;
         this._name = name;
         this._description = description;
-        this._image = image;
         this._singleUnitPrice = singleUnitPrice;
+        this._image = image;
     };
 
     get name() {
@@ -21,12 +30,12 @@ class Product {
         return this._description;
     }
 
-    get image() {
-        return this._image;
-    }
-
     get singleUnitPrice() {
         return this._singleUnitPrice;
+    }
+
+    get image() {
+        return this._image;
     }
 }
 
