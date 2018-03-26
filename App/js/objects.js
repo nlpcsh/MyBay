@@ -104,7 +104,7 @@ class User {
         if (arguments[0] == undefined) {
             throw new Error('No product to remove ID specified!');
         }
-        if (typeof(productIdtoRemove) != 'number') {
+        if (isNaN(productIdtoRemove)) {
             throw new Error('The product ID is not a number!');
         }
 
