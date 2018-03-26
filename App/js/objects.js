@@ -41,9 +41,9 @@ class Product {
 
 class User {
     constructor(uName) {
-        if((arguments[0] == undefined) || (typeof(arguments[0]) != 'string')){
+        if ((arguments[0] == undefined) || (typeof(arguments[0]) != 'string')) {
             throw new Error('User name must be specified!');
-        } 
+        }
         this._uName = uName;
         this._shoppingBasket = [];
     }
@@ -57,11 +57,11 @@ class User {
     }
 
     addToBasket(product) {
-        if(arguments[0] == undefined){
+        if (arguments[0] == undefined) {
             throw new Error('No product is specified to add!');
         }
-        if(product.name == undefined || product.id == undefined || product.image == undefined 
-            || product.description == undefined || product.singleUnitPrice == undefined){
+        if (product.name == undefined || product.id == undefined || product.image == undefined ||
+            product.description == undefined || product.singleUnitPrice == undefined) {
             throw new Error('The argument is not a valid Product!');
         }
 
@@ -100,10 +100,11 @@ class User {
         }
     }
     removeFromBasket(productIdtoRemove) {
-        if(arguments[0] == undefined){
+        productIdtoRemove = +productIdtoRemove;
+        if (arguments[0] == undefined) {
             throw new Error('No product to remove ID specified!');
         }
-        if(typeof(productIdtoRemove) != 'number'){
+        if (typeof(productIdtoRemove) != 'number') {
             throw new Error('The product ID is not a number!');
         }
 
@@ -126,7 +127,7 @@ class User {
                 //$("tr#" + productIdtoRemove + " .unit-price").html('$' + (this._shoppingBasket[i].quantity * this._shoppingBasket[i].singleUnitPrice));
             }
         }
-        if(!hasProduct) {
+        if (!hasProduct) {
             throw new Error('No Such Product in the basket!');
             return;
         }
