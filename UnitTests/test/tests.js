@@ -213,22 +213,18 @@ describe('Testing JS', function() {
                 });
 
             });
+            describe('Testing MyBayManger', function() {
+                it('Expect MyBayManger to be a class', function() {
+                    expect(MyBayManger).to.be.a('function');
+                });
+                it('Expect MyBayManger.getListOfProducts() to be a function', function() {
+                    expect(MyBayManger.getListOfProducts).to.be.a('function');
+                });
+                it('Expect MyBayManger.getTotalProductsValue() to be a function', function() {
+                    expect(MyBayManger.getTotalProductsValue).to.be.a('function');
+                });
+            });
         });
-        /*
-        it('Task 2', function() {
-            assert.equal(2, 2);
-        });
-
-        it('Equal test', function() {
-            const array = [1, 2, 3];
-            expect(array).to.equal(array);
-        });
-        it('Eql test', function() {
-            const array1 = [1, 2, 3];
-            const array2 = [1, 2, 3];
-            expect(array1).to.eql(array2);
-        });
-        */
     });
 
 });

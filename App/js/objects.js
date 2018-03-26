@@ -138,15 +138,10 @@ class User {
 class MyBayManger {
     static getListOfProducts(productListId, db) {
         productListId = productListId || 0;
-        // real functionality should be to get the available products from the app server
-        // let products = {
-        //     listId: productListId,
-        //     productsList: []
-        // };
-
-        // for (let i = 0; i < 5; i += 1) {
-        //     products.productsList.push(new Product("Name " + i, 1000 + i, "Description " + i, i + 10.99, "img/boat" + (+i + 1) + ".jpg"));
-        // }
+        db = db || [{
+            listId: 0,
+            productsList: []
+        }];
 
         let products = db[productListId];
 
