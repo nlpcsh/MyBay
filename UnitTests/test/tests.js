@@ -111,7 +111,7 @@ describe('Testing JS', function() {
         });
         describe('Testing Objects', function() {
             describe('Testing Product', function() {
-                it('Expect Product to be an object', function() {
+                it('Expect Product to be a class', function() {
                     expect(Product).to.be.a('function');
                 });
                 it('Expect Product to throw if there are no 5 arguments', function() {
@@ -140,6 +140,78 @@ describe('Testing JS', function() {
                 it('Expect Product has singleUnitPrice', function() {
                     expect(justProduct).to.has.property('singleUnitPrice').equal(33);
                 });
+            });
+            describe('Testing User', function() {
+                it('Expect User to be a class', function() {
+                    expect(User).to.be.a('function');
+                });
+                it('Expect User to throw if there is no name specified', function() {
+                    expect(() => { new User() }).to.throw('User name must be specified!');
+                });
+                it('Expect User to throw if name is not string', function() {
+                    expect(() => { new User(5) }).to.throw('User name must be specified!');
+                });
+
+                let newUser = new User('Unufri');
+                it('Expect User to has name', function() {
+                    expect(newUser).to.has.property('uName').equal('Unufri');
+                });
+                it('Expect User to has property "shoppingBasket" which is "Array"', function() {
+                    expect(newUser).to.has.property('shoppingBasket').that.is.an.instanceof(Array);
+                });
+                it('Expect User to has property "addToBasket" which is "function"', function() {
+                    expect(newUser).to.has.property('addToBasket').that.is.a('function');
+                });
+                it('Expect User to has property "removeFromBasket" which is "function"', function() {
+                    expect(newUser).to.has.property('removeFromBasket').that.is.a('function');
+                });
+                it('Expect User to has property "removeFromBasket" which is "function"', function() {
+                    expect(newUser).to.has.property('removeFromBasket').that.is.a('function');
+                });
+                it('Expect User.addToBasket() to throw if there is no product specified', function() {
+                    expect(() => { newUser.addToBasket() }).to.throw('No product is specified to add!');
+                });
+                it('Expect User.addToBasket(5) to throw if there is no valid product specified', function() {
+                    expect(() => { newUser.addToBasket(5); }).to.throw('The argument is not a valid Product!');
+                });
+                it('Expect User.addToBasket(product) to add a product in the shoppingBasket', function() {
+                    newUser.addToBasket(products.productsList[0]);
+                    expect(newUser.shoppingBasket[0]).to.has.property('name').equal('Boat3');
+                    expect(newUser.shoppingBasket[0]).to.has.property('productId').equal(3333);
+                    expect(newUser.shoppingBasket[0]).to.has.property('singleUnitPrice').equal(33);
+                    expect(newUser.shoppingBasket[0]).to.has.property('quantity').equal(1);
+                });
+                it('Expect User.addToBasket(product) to change quantity of the same product', function() {
+                    newUser.addToBasket(products.productsList[0]);
+                    expect(newUser.shoppingBasket[0]).to.has.property('name').equal('Boat3');
+                    expect(newUser.shoppingBasket[0]).to.has.property('productId').equal(3333);
+                    expect(newUser.shoppingBasket[0]).to.has.property('singleUnitPrice').equal(33);
+                    expect(newUser.shoppingBasket[0]).to.has.property('quantity').equal(2);
+                });
+                it('Expect User.addToBasket(product2) to add new product2 and keep the previos one', function() {
+                    newUser.addToBasket(products.productsList[1]);
+
+                    expect(newUser.shoppingBasket[1]).to.has.property('name').equal('Boat1');
+                    expect(newUser.shoppingBasket[1]).to.has.property('productId').equal(1111);
+                    expect(newUser.shoppingBasket[1]).to.has.property('singleUnitPrice').equal(11);
+                    expect(newUser.shoppingBasket[1]).to.has.property('quantity').equal(1);
+
+                    expect(newUser.shoppingBasket[0]).to.has.property('name').equal('Boat3');
+                    expect(newUser.shoppingBasket[0]).to.has.property('productId').equal(3333);
+                    expect(newUser.shoppingBasket[0]).to.has.property('singleUnitPrice').equal(33);
+                    expect(newUser.shoppingBasket[0]).to.has.property('quantity').equal(2);
+                });
+
+                it('Expect User.removeFromBasket() to throw if there is no valid product ID specified', function() {
+                    expect(() => { newUser.removeFromBasket(); }).to.throw('No product to remove ID specified!');
+                });
+                it('Expect User.removeFromBasket(productId) to throw if there is no valid product ID number specified', function() {
+                    expect(() => { newUser.removeFromBasket('abc'); }).to.throw('The product ID is not a number!');
+                });
+                it('Expect User.removeFromBasket(productId) to throw if there is no such product', function() {
+                    expect(() => { newUser.removeFromBasket(111111); }).to.throw('No Such Product in the basket!');
+                });
+
             });
         });
         /*

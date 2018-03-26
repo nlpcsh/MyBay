@@ -41,6 +41,9 @@ class Product {
 
 class User {
     constructor(uName) {
+        if((arguments[0] == undefined) || (typeof(arguments[0]) != 'string')){
+            throw new Error('User name must be specified!');
+        } 
         this._uName = uName;
         this._shoppingBasket = [];
     }
@@ -54,6 +57,14 @@ class User {
     }
 
     addToBasket(product) {
+        if(arguments[0] == undefined){
+            throw new Error('No product is specified to add!');
+        }
+        if(product.name == undefined || product.id == undefined || product.image == undefined 
+            || product.description == undefined || product.singleUnitPrice == undefined){
+            throw new Error('The argument is not a valid Product!');
+        }
+
         function addNewProductToTable(shoppingBasket) {
             shoppingBasket.push({
                 name: product.name,
@@ -66,7 +77,7 @@ class User {
             toastr["info"]("Product " + product.name + " added.");
         }
 
-        // add quantoty if the product exists
+        // add quantity if the product exists
         if (this._shoppingBasket[0] == undefined) {
             addNewProductToTable(this._shoppingBasket);
         } else {
@@ -89,9 +100,19 @@ class User {
         }
     }
     removeFromBasket(productIdtoRemove) {
+        if(arguments[0] == undefined){
+            throw new Error('No product to remove ID specified!');
+        }
+        if(typeof(productIdtoRemove) != 'number'){
+            throw new Error('The product ID is not a number!');
+        }
+
+        let hasProduct = false;
+
         let productToRemoveName = '';
         for (let i = 0; i < this._shoppingBasket.length; i += 1) {
             if (this._shoppingBasket[i].productId == productIdtoRemove) {
+                hasProduct = true;
                 productToRemoveName = this._shoppingBasket[i].name;
                 this._shoppingBasket[i].quantity -= 1;
                 if (this._shoppingBasket[i].quantity == 0) {
@@ -104,6 +125,10 @@ class User {
                 //$("tr#" + productIdtoRemove + " .quantity").html(this._shoppingBasket[i].quantity);
                 //$("tr#" + productIdtoRemove + " .unit-price").html('$' + (this._shoppingBasket[i].quantity * this._shoppingBasket[i].singleUnitPrice));
             }
+        }
+        if(!hasProduct) {
+            throw new Error('No Such Product in the basket!');
+            return;
         }
         toastr["info"]("Product " + productToRemoveName + " removed.");
     }
