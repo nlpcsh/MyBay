@@ -28,3 +28,7 @@ h2+p {
 .product-name {
     font-size: 1.15em;
 }
+
+#toast-container {
+    top: 200px;
+}

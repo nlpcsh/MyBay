@@ -1,6 +1,19 @@
 'use strict';
 
-let homeController = function () {
+const homeController = function () {
+    function page(context){
+        templates.get('home')
+        .then(function (template){
+                context.$element().html(template(currentUser));
+        });
+    }
+
+    return {
+        page: page
+    }
+}();
+
+const productListController = function () {
 
     function all(context){
 
@@ -11,7 +24,7 @@ let homeController = function () {
         });
         */
 
-        templates.get('product')
+        templates.get('productList')
             .then(function (template){
                 context.$element().html(template(products));
             })
@@ -30,12 +43,51 @@ let homeController = function () {
     }
 }();
 
-let basketController = function () {
+const aboutController = function () {
+    function page(context){
+        templates.get('about')
+        .then(function (template){
+                context.$element().html(template(currentUser));
+        });
+    }
+
+    return {
+        page: page
+    }
+}();
+
+const contactController = function () {
+    function page(context){
+        templates.get('contact')
+        .then(function (template){
+                context.$element().html(template(currentUser));
+        });
+    }
+
+    return {
+        page: page
+    }
+}();
+
+const loginController = function () {
+    function login(context){
+        templates.get('login')
+        .then(function (template){
+                context.$element().html(template(currentUser));
+        });
+    }
+
+    return {
+        login: login
+    }
+}();
+
+const basketController = function () {
 
     function basket(context) {
 
         //let basketTemplate = Handlebars.compile(document.getElementById('basket-template').innerHTML);
-        //$('#product-container').html(basketTemplate(currentUser));
+        //$('#page-container').html(basketTemplate(currentUser));
 
         templates.get('basket')
         .then(function (template){

@@ -6,21 +6,27 @@ let currentUser = new User("Unufri");
 
 $(document).ready(function() {
 
-    let sammyApp = Sammy("#product-container", function() {
-        this.get('#/', homeController.all);
+    let sammyApp = Sammy("#page-container", function() {
+        this.get('#/home', homeController.page);
         // https://youtu.be/T0jtFmFPU-4?t=1648
 
-        this.get('#/products', homeController.all);
+        this.get('#/products', productListController.all);
 
-        this.get('#/basket', basketController.basket );
+        this.get('#/basket', basketController.basket);
+
+        this.get('#/about', aboutController.page);
+
+        this.get('#/contact', contactController.page);
+
+        this.get('#/login', loginController.login);
 
         $(function() {
-            sammyApp.run('#/products');
+            sammyApp.run('#/home');
         });
 
     });
 
-    $('#product-container').on('click', 'div', function(event) {
+    $('#page-container').on('click', 'div', function(event) {
         let curentId = event.currentTarget.id;
 
         if (event.target.classList.contains('add-to-basket')) {
@@ -38,6 +44,13 @@ $(document).ready(function() {
         $('.active').removeClass('active');
         $this.addClass('active');
     });
+
+    if (toastr) {
+        toastr.options = {
+            positionClass: 'toast-top-center'
+        }
+    }
+
 });
 
 
