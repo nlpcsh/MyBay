@@ -2,6 +2,10 @@
     padding: 10px;
 }
 
+.hidden {
+    display: none !important;
+}
+
 img {
     max-width: 100%;
     height: 220px;
@@ -31,4 +35,36 @@ h2+p {
 
 #toast-container {
     top: 200px;
+}
+
+#mainNavbar {
+    font-size: 1.5rem;
+    font-weight: 100;    
+}
+
+#mainNavbar h2 {
+    font-weight: 400;    
+}
+
+#mainNavbar .nav-link {
+    color: black;
+}
+
+#mainNavbar .nav-link:hover {
+    color: black;
+}
+
+#mainNavbar .navbar-brand {
+    color: black;
+    font-size: 1.5rem;
+}
+
+.nav-item.active {
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+.navbar.scrolled {
+    background: #007bff;
+    transition: background 500ms;
 }

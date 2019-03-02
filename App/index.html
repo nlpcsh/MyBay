@@ -32,32 +32,37 @@
 </head>
 
 <body>
-
-    <nav class="navbar navbar-fixed-top navbar-inverse">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">MyBay</a>
-            </div>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="active"><a href="#/products">Products</a></li>
-                    <li><a href="#/about">About</a></li>
-                    <li><a href="#/contact">Contact</a></li>
-                    <li><a href="#/login" id="login">Login</a></li>
-                    <li><a href="#/sign-out" id="sigh-out" class="hidden">Sign Out</a></li>
-                    <li><a href="#/basket" id="basket" class="float-right">Basket</a></li>
-                </ul>
-            </div>
-            <!-- /.nav-collapse -->
+    <nav id="mainNavbar" class="navbar navbar-light navbar-expand-md py-0 fixed-top">
+        <a href="#/home" class="navbar-brand">
+            <h2 class="mb-0">MyBay</h2>
+        </a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navLinks">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="#/products" class="nav-link">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#/about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#/contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#/login" id="login" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item hidden">
+                    <a href="#/sign-out" id="sign-out" class="nav-link">Sign Out</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#/basket" id="basket" class="nav-link">Basket</a>
+                </li>
+            </ul>
         </div>
-        <!-- /.container -->
     </nav>
+
     <div class="container" id="main-content">
 
         <div class="row row-offcanvas row-offcanvas-right">
@@ -88,6 +93,7 @@
     </div>
     <!--/.container-->
 
+    <script src="libs/popper/popper.min.js"></script>
     <script src="libs/bootstrap/js/bootstrap.min.js"></script>
     <script src="js/data.js"></script>
     <script src="js/objects.js"></script>

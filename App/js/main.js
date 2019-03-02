@@ -39,10 +39,14 @@ $(document).ready(function() {
         //$("#total-value").html(MyBayManger.getTotalProductsValue(currentUser.shoppingBasket, products.productsList));
     });
     // make 
-    $('.nav.navbar-nav').on('click', 'li', function(event) {
-        let $this = $(this);
-        $('.active').removeClass('active');
-        $this.addClass('active');
+    $('#navLinks li').on('click', function(event) {
+        $('#navLinks').removeClass('show');
+        $('#navLinks .active').removeClass('active');
+        $(this).toggleClass('active');
+    });
+
+    $('.navbar-brand').on('click', function(event) {
+        $('#navLinks .active').removeClass('active');
     });
 
     if (toastr) {
@@ -50,6 +54,13 @@ $(document).ready(function() {
             positionClass: 'toast-top-center'
         }
     }
+
+    $(function () {
+        $(document).scroll(function () {
+            var $nav = $("#mainNavbar");
+            $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+        });
+    });
 
 });
 
