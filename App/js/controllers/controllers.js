@@ -74,6 +74,12 @@ const loginController = function () {
         templates.get('login')
         .then(function (template){
                 context.$element().html(template(currentUser));
+        })
+        .then(function () {
+            $('#register-form-link').on('click', function(event) {
+                $('#register-form').removeClass('hidden');
+                $('#sign-in-form').addClass('hidden');
+            });
         });
     }
 
