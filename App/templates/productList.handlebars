@@ -1,18 +1,20 @@
-<div class="row">
-    {{#productsList}}
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 product" id={{id}}>
-        <p class="product-name">
-            <h3>{{name}}</h3>
-        </p>
-        <img src={{image}} alt="boat" class="img-fluid"/>
-        <p>
-            {{description}}
-        </p>
-        <p>
-            Cost: ${{singleUnitPrice}}
-        </p>
-        <button class="add-to-basket btn btn-primary">Add to Basket</button>
-        <button class="remove-from-basket hidden btn btn-danger">Remove from Basket</buton>
+<div class="container">
+    <div class="row">
+        {{#productsList}}
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 product" id={{id}}>
+            <p class="product-name">
+                <h3>{{name}}</h3>
+            </p>
+            <img src={{image}} alt="boat" class="img-fluid"/>
+            <p>
+                {{description}}
+            </p>
+            <p>
+                Cost: ${{singleUnitPrice}}
+            </p>
+            <button class="add-to-basket btn btn-primary">Add to Basket</button>
+            <button class="remove-from-basket hidden btn btn-danger">Remove from Basket</buton>
+        </div>
+        {{/productsList}}
     </div>
-    {{/productsList}}
 </div>

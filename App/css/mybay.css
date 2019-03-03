@@ -68,3 +68,16 @@ h2+p {
     background: #007bff;
     transition: background 500ms;
 }
+
+#sign-in-form {
+    max-width: 400px;
+}
+
+#register-form {
+    max-width: 600px;
+}
+
+#register-form-link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
