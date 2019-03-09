@@ -11,7 +11,7 @@ function getDataToSent(currentUser, products) {
         })
     });
     currentBasketData.push({
-        totalPrice: MyBayManger.getTotalProductsValue(currentUser.shoppingBasket, products.productsList)
+        totalPrice: MyBayManger.getTotalProductsValue(currentUser.shoppingBasket)
     });
     return currentBasketData;
 }

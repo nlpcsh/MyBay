@@ -158,7 +158,7 @@ class MyBayManger {
 
         return products;
     }
-    static getTotalProductsValue(userShopingBasket, productsList) {
+    static getTotalProductsValue(userShopingBasket) {
         let totalProductsValue = 0;
         for (let item of userShopingBasket) {
             totalProductsValue += (item.quantity * item.singleUnitPrice);

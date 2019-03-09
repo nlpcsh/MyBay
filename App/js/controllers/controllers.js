@@ -129,7 +129,7 @@ const basketController = function () {
                 $("tr#" + p.productId + " .unit-price").html('$' + (p.quantity * p.singleUnitPrice));
             });
             // set total value
-            let totalValue = MyBayManger.getTotalProductsValue(currentUser.shoppingBasket, products.productsList);
+            let totalValue = MyBayManger.getTotalProductsValue(currentUser.shoppingBasket);
 
             $("#total-value").html(totalValue);
             if (totalValue == 0) {
