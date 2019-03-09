@@ -47,7 +47,7 @@ h2+p {
 }
 
 #mainNavbar .nav-link {
-    color: black;
+    color: white;
 }
 
 #mainNavbar .nav-link:hover {
@@ -55,7 +55,7 @@ h2+p {
 }
 
 #mainNavbar .navbar-brand {
-    color: black;
+    color: white;
     font-size: 1.5rem;
 }
 
@@ -67,6 +67,42 @@ h2+p {
 .navbar.scrolled {
     background: #007bff;
     transition: background 500ms;
+}
+
+#home-header-top {
+    background: url("../img/headers/sails_up.jpg") bottom center/cover no-repeat;
+    min-height: 550px;
+    position: relative; 
+}
+
+#products-header-top {
+    background: url("../img/headers/open_sea.jpg") bottom center/cover no-repeat;
+    min-height: 550px;
+    position: relative; 
+}
+
+#login-header-top {
+    background: url("../img/headers/shallow.jpg") bottom center/cover no-repeat;
+    min-height: 550px;
+    position: relative; 
+}
+
+#basket-header-top {
+    background: url("../img/headers/small_harbour_only.png") bottom center/cover no-repeat;
+    min-height: 550px;
+    position: relative; 
+}
+
+#about-header-top {
+    background: url("../img/headers/beach_4.jpg") bottom center/cover no-repeat;
+    min-height: 550px;
+    position: relative; 
+}
+
+#contact-header-top {
+    background: url("../img/headers/harbour_area.jpg") bottom center/cover no-repeat;
+    min-height: 550px;
+    position: relative; 
 }
 
 #sign-in-form {

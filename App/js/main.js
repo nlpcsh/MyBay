@@ -37,6 +37,7 @@ $(document).ready(function() {
             currentUser.removeFromBasket(curentId);
         }
         //$("#total-value").html(MyBayManger.getTotalProductsValue(currentUser.shoppingBasket, products.productsList));
+        return false;
     });
     // make 
     $('#navLinks li').on('click', function(event) {
