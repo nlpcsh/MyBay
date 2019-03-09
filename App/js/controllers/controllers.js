@@ -106,7 +106,12 @@ const basketController = function () {
                 $("tr#" + p.productId + " .unit-price").html('$' + (p.quantity * p.singleUnitPrice));
             });
             // set total value
-            $("#total-value").html(MyBayManger.getTotalProductsValue(currentUser.shoppingBasket, products.productsList));
+            let totalValue = MyBayManger.getTotalProductsValue(currentUser.shoppingBasket, products.productsList);
+
+            $("#total-value").html(totalValue);
+            if (totalValue == 0) {
+                $('#confirm-order').attr("disabled", true);
+            }
 
             $("#confirm-order").on('click', function() {
                 if (currentUser.shoppingBasket[0] == undefined) {
