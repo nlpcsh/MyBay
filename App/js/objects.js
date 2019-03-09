@@ -56,6 +56,21 @@ class User {
         return this._shoppingBasket;
     }
 
+    productQuantity(productID) {
+        if (!productID) {
+            throw new Error('No product ID to check in basket specified!');
+        }
+        if (this._shoppingBasket && (this._shoppingBasket.length > 0)) {
+            for (let i = 0; i < this._shoppingBasket.length; i += 1) {
+                if (this._shoppingBasket[i].productId == productID) {
+                    return this._shoppingBasket[i].quantity;
+                }
+            }
+        }
+
+        return null;
+    }
+
     addToBasket(product) {
         if (arguments[0] == undefined) {
             throw new Error('No product is specified to add!');
@@ -74,6 +89,7 @@ class User {
             });
             //$("#added-products-table-header").after('<tr id=' + product.id + ' > <td>' + product.name + '</td><td>$' + product.singleUnitPrice + '</td><td class="quantity">' + 1 + ' </td><td class="unit-price">$' + product.singleUnitPrice + '</td> </tr>');
             $("#" + product.id + " .hidden").removeClass("hidden").addClass("remove");
+            $('#basket').addClass('has-products');
             toastr["info"]("Product " + product.name + " added.");
         }
 
@@ -96,6 +112,8 @@ class User {
                     return;
                 }
             }
+            $('#basket').addClass('has-products');
+
             toastr["info"]("Product " + product.name + " added.");
         }
     }
@@ -108,30 +126,23 @@ class User {
             throw new Error('The product ID is not a number!');
         }
 
-        let hasProduct = false;
-
         let productToRemoveName = '';
         for (let i = 0; i < this._shoppingBasket.length; i += 1) {
             if (this._shoppingBasket[i].productId == productIdtoRemove) {
-                hasProduct = true;
                 productToRemoveName = this._shoppingBasket[i].name;
                 this._shoppingBasket[i].quantity -= 1;
-                if (this._shoppingBasket[i].quantity == 0) {
+
+                toastr["warning"]("Product " + productToRemoveName + " removed.");
+
+                if (this._shoppingBasket[i].quantity < 1) {
                     this._shoppingBasket.splice(i, 1);
-                    //$("#added-products tr#" + productIdtoRemove).remove();
-                    $("#" + productIdtoRemove + " .remove").removeClass("remove").addClass("hidden");
-                    toastr["info"]("Product " + productToRemoveName + " removed.");
-                    return;
+
+                    return 0;
+                } else {
+                    return this._shoppingBasket[i].quantity;
                 }
-                //$("tr#" + productIdtoRemove + " .quantity").html(this._shoppingBasket[i].quantity);
-                //$("tr#" + productIdtoRemove + " .unit-price").html('$' + (this._shoppingBasket[i].quantity * this._shoppingBasket[i].singleUnitPrice));
             }
         }
-        if (!hasProduct) {
-            throw new Error('No Such Product in the basket!');
-            return;
-        }
-        toastr["info"]("Product " + productToRemoveName + " removed.");
     }
 }
 

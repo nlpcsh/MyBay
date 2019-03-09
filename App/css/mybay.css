@@ -116,3 +116,7 @@ h2+p {
     text-decoration: underline;
     cursor: pointer;
 }
+
+#basket.has-products {
+    color: orange;
+}

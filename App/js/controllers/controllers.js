@@ -32,8 +32,31 @@ const productListController = function () {
                 // add Remove button if necessary
                 currentUser.shoppingBasket.forEach(p => {
                     if (p.quantity > 0) {
-                        $("#" + p.productId + " .hidden").removeClass("hidden").addClass("remove");
+                        $("#remove-" + p.productId).removeClass("hidden").addClass("remove");
                     }
+                });
+
+                $('.add-to-basket').on('click', function(event) {
+                    let curentId = event.currentTarget.id.split('-')[1];
+                    currentUser.addToBasket(getProductById(products, curentId));
+                    $('#remove-' + curentId).removeClass('hidden').addClass("remove");
+
+                    return false;
+                });
+
+                $('.remove-from-basket').on('click', function(event) {
+                    let curentId = event.currentTarget.id.split('-')[1];
+                    let productQuantity = currentUser.removeFromBasket(curentId);
+
+                    if (productQuantity < 1) {
+                        $('#remove-' + curentId).addClass('hidden').removeClass('remove');
+                    }
+
+                    if (currentUser.shoppingBasket && (currentUser.shoppingBasket.length < 1)) {
+                        $('#basket').removeClass('has-products');
+                    }
+
+                    return false;
                 });
             });
     }
@@ -113,7 +136,8 @@ const basketController = function () {
                 $('#confirm-order').attr("disabled", true);
             }
 
-            $("#confirm-order").on('click', function() {
+            $("#confirm-order").on('click', function(e) {
+                e.preventDefault();
                 if (currentUser.shoppingBasket[0] == undefined) {
                     toastr["warning"]("Your shopping cart is empty.");
                 } else {

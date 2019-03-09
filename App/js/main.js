@@ -26,19 +26,6 @@ $(document).ready(function() {
 
     });
 
-    $('#page-container').on('click', 'div', function(event) {
-        let curentId = event.currentTarget.id;
-
-        if (event.target.classList.contains('add-to-basket')) {
-            currentUser.addToBasket(getProductById(products, curentId));
-        }
-
-        if (event.target.classList.contains('remove-from-basket')) {
-            currentUser.removeFromBasket(curentId);
-        }
-        //$("#total-value").html(MyBayManger.getTotalProductsValue(currentUser.shoppingBasket, products.productsList));
-        return false;
-    });
     // make 
     $('#navLinks li').on('click', function(event) {
         $('#navLinks').removeClass('show');
