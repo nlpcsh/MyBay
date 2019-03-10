@@ -1,0 +1,122 @@
+.product {
+    padding: 10px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+img {
+    max-width: 100%;
+    height: 220px;
+}
+
+table {
+    text-align: center;
+    width: inherit;
+}
+
+table+div>p {
+    font-size: 1.25em;
+}
+
+h2 {
+    text-align: center;
+}
+
+h2+p {
+    text-align: center;
+}
+
+.product-name {
+    font-size: 1.15em;
+}
+
+#toast-container {
+    top: 200px;
+}
+
+#mainNavbar {
+    font-size: 1.5rem;
+    font-weight: 100;
+
+    h2 {
+        font-weight: 400;
+    }
+
+    .nav-link {
+        color: white;
+    }
+
+    .nav-link:hover {
+        color: black;
+    }
+
+    .navbar-brand {
+        color: white;
+        font-size: 1.5rem;
+    }
+}
+
+.nav-item.active {
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+.navbar.scrolled {
+    background: #007bff;
+    transition: background 500ms;
+}
+
+#home-header-top {
+    background: url("../img/headers/sails_up.jpg") bottom center/cover no-repeat;
+    min-height: 550px;
+    position: relative; 
+}
+
+#products-header-top {
+    background: url("../img/headers/open_sea.jpg") bottom center/cover no-repeat;
+    min-height: 550px;
+    position: relative; 
+}
+
+#login-header-top {
+    background: url("../img/headers/shallow.jpg") bottom center/cover no-repeat;
+    min-height: 550px;
+    position: relative; 
+}
+
+#basket-header-top {
+    background: url("../img/headers/small_harbour_only.png") bottom center/cover no-repeat;
+    min-height: 550px;
+    position: relative; 
+}
+
+#about-header-top {
+    background: url("../img/headers/beach_4.jpg") bottom center/cover no-repeat;
+    min-height: 550px;
+    position: relative; 
+}
+
+#contact-header-top {
+    background: url("../img/headers/harbour_area.jpg") bottom center/cover no-repeat;
+    min-height: 550px;
+    position: relative; 
+}
+
+#sign-in-form {
+    max-width: 400px;
+}
+
+#register-form {
+    max-width: 600px;
+}
+
+#register-form-link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#basket.has-products {
+    color: orange;
+}
