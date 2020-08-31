@@ -1,5 +1,5 @@
 'use strict';
-let fs = require('fs');
+const fs = require('fs');
 
 module.exports = function(app) {
     let path = './routers';
