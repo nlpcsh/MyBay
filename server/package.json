@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "back end of My Bay app",
+  "description": "back end of 'My Bay' app",
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -16,8 +16,11 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^6.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
   "scripts": {
+    "nodemon": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nikolay Petrov",
