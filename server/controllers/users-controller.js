@@ -3,7 +3,7 @@
 
 module.exports = function() {
     return {
-        profile(req, res) {
+        getProfile(req, res) {
             if (!req.isAuthenticated()) {
                 res.status(401).redirect('/unauthorized');
             } else {

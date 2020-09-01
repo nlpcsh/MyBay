@@ -2,6 +2,7 @@
 </section>
 
 <section>
+    <div class="error-msg">{{message}}</div>
 <div class="container my-5">
     <div class="d-flex justify-content-center">
     <div id="sign-in-form" class="border rounded p-s5 mb-5 p-3">
@@ -40,7 +41,7 @@
             <div class="row">
                 <div class="form-group col-12 col-sm-6">
                     <label for="email1">Email</label>
-                    <input type="email" id="email1" name="email1" class="form-control" placeholder="myemail@example.com" required />
+                    <input type="email" id="email1" name="username" class="form-control" placeholder="myemail@example.com" required />
                 </div>
                 <div class="form-group col-12 col-sm-6">
                     <label for="email2">Email Confirmation</label>
@@ -50,11 +51,11 @@
             <div class="row">
                 <div class="form-group col-12 col-sm-6">
                     <label for="password1">Password</label>
-                    <input type="password" id="password1" name="password1" class="form-control" name="password1" required />
+                    <input type="password" id="password1" name="password" class="form-control" required />
                 </div>
                 <div class="form-group col-12 col-sm-6">
                     <label for="password2">Password Confirmation</label>
-                    <input type="password" id="password2" name="password2" class="form-control" name="password2" required />
+                    <input type="password" id="password2" name="password2" class="form-control" required />
                 </div>
             </div>
 

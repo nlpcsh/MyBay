@@ -15,7 +15,7 @@ router.get('/login', authController.getLogin);
 
 router.get('/logout', authController.logout);
 
-router.get('/profile', usersController.profile);
+router.get('/profile', usersController.getProfile);
 
 router.get('/unauthorized', (req, res) => res.send('<h1>Not authorized!</h1>'));
 

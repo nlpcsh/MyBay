@@ -3,7 +3,6 @@
 const passport = require('passport');
 const User = require('../models/user-model');
 
-
 module.exports = function () {
     return {
         login(req, res, next) {
@@ -20,25 +19,29 @@ module.exports = function () {
                 }
 
                 passport.authenticate('local')(req, res, function () {
-                    res.redirect('/profile');
+                    res.status(200).redirect('/profile');
                 });
             });
         },
         logout(req, res) {
             req.logout();
-            res.redirect('/home');
+            res.status(200).redirect('/home');
         },
         getLogin(req, res) {
-            res.render('login');
+            res.status(200).render('login');
         },
         register(req, res) {
-            User.register({ username: req.body.email1 }, req.body.password1, function(err, user) {
+            User.register({ username: req.body.username }, req.body.password, function(err, user) {
+                var user1 = user;
+                console.log(req.body.username);
+                console.log(req.body.password);
                 if (err) {
                     console.log(err);
-                    res.redirect('/login');
+                    //res.status(401).send(err);
+                    res.status(401).render('login', err);
                 } else {
                     passport.authenticate('local')(req, res, function() {
-                        res.redirect('/profile');
+                        res.status(200).redirect('/profile');
                     });
                 }
             });
