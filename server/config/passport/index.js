@@ -18,6 +18,8 @@ passport.deserializeUser((userId, done) => {
         .catch(error => done(error, false));
 });
 
+require('./google-strategy')(passport);
+
 // attach passport middleware to app
 module.exports = app => {
     app.use(passport.initialize());

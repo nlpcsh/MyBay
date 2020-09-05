@@ -31,10 +31,11 @@ module.exports = function () {
             res.status(200).render('login');
         },
         register(req, res) {
-            User.register({ username: req.body.username }, req.body.password, function(err, user) {
-                var user1 = user;
-                console.log(req.body.username);
-                console.log(req.body.password);
+            User.register(new User({ 
+                username: req.body.username,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName
+            }), req.body.password, function(err, user) {
                 if (err) {
                     console.log(err);
                     //res.status(401).send(err);
