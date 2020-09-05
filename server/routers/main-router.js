@@ -5,6 +5,8 @@ const createMainController = require('../controllers/main-controller');
 
 const mainController = createMainController();
 
+router.get('/', mainController.getHome);
+
 router.get('/home', mainController.getHome);
 
 router.get('/about', mainController.getAbout);
