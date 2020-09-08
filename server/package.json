@@ -18,9 +18,11 @@
     "passport-local-mongoose": "^6.0.1"
   },
   "devDependencies": {
+    "node-sass": "^4.14.1",
     "nodemon": "^2.0.4"
   },
   "scripts": {
+    "scss": "node-sass --watch scss -o public\\css",
     "nodemon": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
