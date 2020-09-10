@@ -18,11 +18,21 @@
     "passport-local-mongoose": "^6.0.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "babel-cli": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
+    "nodemon": "^2.0.4",
+    "watch": "^1.0.2"
   },
   "scripts": {
     "nodemon": "nodemon app.js",
+    "dev": "watch \"npm run build\" scripts",
+    "build": "babel scripts -d public\\js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "babel": {
+    "presets": [
+      "latest"
+    ]
   },
   "author": "Nikolay Petrov",
   "license": "ISC"
