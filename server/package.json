@@ -21,9 +21,11 @@
     "babel-cli": "^6.26.0",
     "babel-preset-latest": "^6.24.1",
     "nodemon": "^2.0.4",
-    "watch": "^1.0.2"
+    "watch": "^1.0.2",
+    "node-sass": "^4.14.1"
   },
   "scripts": {
+    "scss": "node-sass --watch scss -o public\\css",
     "nodemon": "nodemon app.js",
     "dev": "watch \"npm run build\" scripts",
     "build": "babel scripts -d public\\js",
