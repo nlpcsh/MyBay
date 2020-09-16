@@ -10,7 +10,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.1.0",
     "express-session": "^1.17.1",
-    "mongoose": "^5.10.1",
+    "mongoose": "^5.10.4",
     "mongoose-findorcreate": "^3.0.0",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
@@ -20,9 +20,9 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-latest": "^6.24.1",
+    "node-sass": "^4.14.1",
     "nodemon": "^2.0.4",
-    "watch": "^1.0.2",
-    "node-sass": "^4.14.1"
+    "watch": "^1.0.2"
   },
   "scripts": {
     "scss": "node-sass --watch scss -o public\\css",
