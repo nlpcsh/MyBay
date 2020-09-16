@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="css/productList.css">
+
+<section id="products-header-top" class="d-flex justify-content-center align-items-center">
+</section>
+
+<section>
+<div class="container product-list">
+    <div class="row">
+        {{#each .}}
+        {{#if name}}
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 product">
+            <p class="product-name">
+                <h3>{{name}}</h3>
+            </p>
+            <img src={{image}} alt="boat" class="img-fluid"/>
+            <p class="product-description">
+                {{description}}
+            </p>
+            <p class="product-price text-right">
+                Cost: ${{price}}
+            </p>
+            <button id="add-{{_id}}" class="add-to-basket btn btn-primary">Add to Basket</button>
+            <button id="remove-{{_id}}" class="remove-from-basket hidden btn btn-danger">Remove from Basket</buton>
+        </div>
+        {{/if}}
+        {{/each}}
+    </div>
+</div>
+</section>
