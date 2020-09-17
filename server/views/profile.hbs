@@ -1,5 +1,71 @@
-<div class="mt-5 profile">
-    <h1>Welcome {{firstName}} {{lastName}}</h1>
+<section id="profile-header-top" class="d-flex justify-content-center align-items-center">
+</section>
 
-    <a href="/logout" class="logout btn btn-link">Log out</a>
-</div>
+<section>
+    <div class="container profile-details">
+        <div class="row">
+            <h1>Welcome {{firstName}}</h1>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-6 address">
+                <h3>Address</h3>
+                {{#if contactInfo.address.country}}
+                    <p><b>Country:</b> {{contactInfo.address.country}}</p>
+                    <p><b>Zip code:</b> {{contactInfo.address.zipCode}}</p>
+                    <p><b>City:</b> {{contactInfo.address.city}}</p>
+                    <p><b>Street:</b> {{contactInfo.address.houseNumber}}, {{contactInfo.address.street}}</p>
+                    <p><b>Telephone:</b> {{contactInfo.tel}}</p>
+                    <div class="text-right">
+                        <button class="btn btn-link edit-address">Edit Address</button>
+                    </div>
+                {{else}}
+                    <form method="post" action="/profile/add-address" class="add-addres">
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="country">Country</label>
+                                <input type="text" id="country" name="country" class="form-control" required />
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="zip-code">Zip Code</label>
+                                <input type="text" id="zip-code" name="zipCode" class="form-control" required />
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="city">City</label>
+                                <input type="text" id="city" name="city" class="form-control" required />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-9">
+                                <label for="street">Street</label>
+                                <input type="text" id="street" name="street" class="form-control" required />
+                            </div>
+                            <div class="form-group col-3">
+                                <label for="houseNumber">Number</label>
+                                <input type="text" id="houseNumber" name="houseNumber" class="form-control" required />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col">
+                                <label for="telephone">Telephone:</label>
+                                <input type="phone" id="telephone" name="telephone" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-link add-address">Add Address</button>
+                        </div>
+                    </form>
+                {{/if}}
+            </div>
+            <div class="col-12 col-lg-6 orders">
+                {{#if orders}}
+                <h3>Orders</h3>
+                    {{#each orders}}
+
+                    {{/each}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="js/profile.js"></script>

@@ -63,9 +63,14 @@ h2+p {
     text-decoration: underline;
 }
 
-.navbar.scrolled {
-    background: #007bff;
-    transition: background 500ms;
+.navbar {
+    background-color: #007bff79;
+
+    &.scrolled {
+        background: #007bff;
+        transition: background 500ms;
+        opacity: 1;
+    }
 }
 
 #home-header-top {
@@ -78,6 +83,12 @@ h2+p {
     background: url("../img/headers/open_sea.jpg") bottom center/cover no-repeat;
     min-height: 550px;
     position: relative; 
+}
+
+#profile-header-top {
+    background: url("../img/headers/shallow.jpg") bottom center/cover no-repeat;
+    min-height: 550px; 
+    position: relative;
 }
 
 #login-header-top {
