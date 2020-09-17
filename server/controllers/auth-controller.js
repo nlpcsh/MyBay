@@ -12,7 +12,6 @@ module.exports = function () {
             });
 
             req.login(user, error => {
-                var user1  = user;
                 if (error) {
                     next(error);
                     return;
