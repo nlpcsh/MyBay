@@ -30,15 +30,25 @@ const userSchema = new mongoose.Schema({
         type: String,
         maxlength: 200
     },
-    whishList: Array,
+    whishList: [ String ],
     image: {
         data: Buffer, 
         contentType: String 
     },
-    orders: Array,
+    orders: [ String ],
     created: {
         type : Date,
         default: Date.now
+    },
+    contactInfo: {
+        tel: String,
+        address: {
+            country: String,
+            city: String,
+            street: String,
+            houseNumber: String,
+            zipCode: String
+        }
     }
 });
 

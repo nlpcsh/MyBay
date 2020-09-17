@@ -18,6 +18,8 @@ router.get('/logout', authController.logout);
 
 router.get('/profile', usersController.getProfile);
 
+router.post('/profile/add-address', usersController.setAddress);
+
 // Google login
 router.get('/auth/google', passport.authenticate('google', { scope: [ 'profile', 'email' ] }));
 
