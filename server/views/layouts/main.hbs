@@ -58,14 +58,17 @@
                     <a href="/contacts" class="nav-link">Contacts</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/login" id="login" class="nav-link">Login</a>
-                </li>
-                <li class="nav-item hidden">
-                    <a href="/logout" id="sign-out" class="nav-link">Sign Out</a>
-                </li>
-                <li class="nav-item">
                     <a href="/basket" id="basket" class="nav-link">Basket</a>
                 </li>
+                {{#if logggedIn}}
+                <li class="nav-item">
+                    <a href="/logout" id="sign-out" class="nav-link">Log Out</a>
+                </li>
+                {{else}}
+                <li class="nav-item">
+                    <a href="/login" id="login" class="nav-link">Login</a>
+                </li>
+                {{/if}}
             </ul>
         </div>
     </nav>

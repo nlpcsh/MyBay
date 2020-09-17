@@ -39,6 +39,13 @@ mongoose.set('useCreateIndex', true);
 ///
 
 require('../passport/')(app);
+
+// sets if user logged to a local var
+app.use(function (req, res, next) {
+    res.locals.logggedIn = req.isAuthenticated();
+    next();
+});
+
 require('../../routers')(app); // loading all routers from the folder
 
 module.exports = app;

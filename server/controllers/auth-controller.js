@@ -19,6 +19,8 @@ module.exports = function () {
                 }
 
                 passport.authenticate('local')(req, res, function () {
+                    // set main template variable
+                    res.locals.login = req.isAuthenticated();
                     res.status(200).redirect('/profile');
                 });
             });
