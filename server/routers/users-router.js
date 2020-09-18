@@ -20,6 +20,8 @@ router.get('/profile', usersController.getProfile);
 
 router.post('/profile/add-address', usersController.setAddress);
 
+router.get('/profile/edit-address', usersController.editAddress);
+
 // Google login
 router.get('/auth/google', passport.authenticate('google', { scope: [ 'profile', 'email' ] }));
 

@@ -25,14 +25,14 @@ app.use(express.static('public'));
 app.use(session({
     secret: process.env.SECRET,
     resave: false,
-    saveUninitialized: false,
-    cookie: { maxAge: 60000 }
+    saveUninitialized: false
 }));
 
 // DB connect
 mongoose.connect(process.env.DB_STRING, {
     useNewUrlParser: true,
-    useUnifiedTopology: true 
+    useUnifiedTopology: true,
+    useFindAndModify: false
 });
 
 mongoose.set('useCreateIndex', true);

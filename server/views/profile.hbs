@@ -19,41 +19,9 @@
                         <button class="btn btn-link edit-address">Edit Address</button>
                     </div>
                 {{else}}
-                    <form method="post" action="/profile/add-address" class="add-addres">
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label for="country">Country</label>
-                                <input type="text" id="country" name="country" class="form-control" required />
-                            </div>
-                            <div class="form-group col-6">
-                                <label for="zip-code">Zip Code</label>
-                                <input type="text" id="zip-code" name="zipCode" class="form-control" required />
-                            </div>
-                            <div class="form-group col-12">
-                                <label for="city">City</label>
-                                <input type="text" id="city" name="city" class="form-control" required />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-9">
-                                <label for="street">Street</label>
-                                <input type="text" id="street" name="street" class="form-control" required />
-                            </div>
-                            <div class="form-group col-3">
-                                <label for="houseNumber">Number</label>
-                                <input type="text" id="houseNumber" name="houseNumber" class="form-control" required />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col">
-                                <label for="telephone">Telephone:</label>
-                                <input type="phone" id="telephone" name="telephone" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <button type="submit" class="btn btn-link add-address">Add Address</button>
-                        </div>
-                    </form>
+
+                    {{> addressForm}}
+
                 {{/if}}
             </div>
             <div class="col-12 col-lg-6 orders">
